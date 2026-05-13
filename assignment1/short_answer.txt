@@ -2,21 +2,24 @@ Assignment 1: Marriage Pact — short answers
 =============================================
 
 Q1. reserve vs resize — and the capacity you chose in get_applicants.
-    YOUR ANSWER:
+    YOUR ANSWER: The reserve function is used to allocate a fixed *capacity* to the vector, which refers to the maximum number of elements that can be added before the vector has to be allocated more memory. The resize function changes the "size" (surprise!) which refers to the number of elements in the vector. Thus, it adds or removes elements while reserve only allocates memory. I used a capacity of 10000, as the README states 1000s of students the students.txt has only 1000, so 10000 seems to be safe. It is also inline with the typical number of students at universities. 
 
 
 Q2. What does it mean for a std::ranges algorithm to take a projection?
     Give one example from your find_matches (or explain why a projection
     didn't help).
-    YOUR ANSWER:
+    YOUR ANSWER: Let me start with my example:
+    >>>std::ranges::copy_if(students, std::back_inserter(results),[user_initial](std::string student_initials){return student_initials == user_initial;} , initials);
+    The function initials is an example of a projection. What it does is it adds another layer on top of the original range, giving a modified view of the range on top of which the predicate will be applied. It thus forms one layer in between the predicate and the original range, simplifying the predicate function. Note that the projection does not change the range itself. 
 
 
 Q3. Iterator invalidation in run_mixer. Which strategy did you choose
     (erase-returns-next-iterator / indices / restart) and why?
     What specifically goes wrong with the naive approach?
-    YOUR ANSWER:
+    YOUR ANSWER: The problem with the naive approach is that when we erase some data from the range, all elements after the erased items move one position to the left. In the naive approach, when we move to the next element, we are actually skipping one or two elements as all elements have shifted once or twice. Thus, we will be skipping some elements. I have used the erase-returns-next-iterator approach as it autmatically handles the last end case and the deletion case. It also requires very little manual error prone calculation, which improves maintainability and readabiity. 
 
 
 Q4. at() vs []. When, if ever, would you reach for vec.at(i) over
     vec[i] in this assignment?
-    YOUR ANSWER:
+    YOUR ANSWER: The at function is much safer than the square brackets as when the index we are accessing is outside the scope of the range, at throws an exception. However, []
+    leads to undefined behavior like accessing some other data stored at the memory. I have only used at in my code for this very reason.   
