@@ -2,7 +2,7 @@
 
 #include <cstddef>
 #include <utility>
-
+#include <stdexcept>
 namespace cs106l {
 
 /**
@@ -13,24 +13,24 @@ namespace cs106l {
 template <typename T> class unique_ptr {
 private:
   /* STUDENT TODO: What data must a unique_ptr keep track of? */
-
+  T* m_ptr;
 public:
   /**
    * @brief Constructs a new `unique_ptr` from the given pointer.
    * @param ptr The pointer to manage.
    * @note You should avoid using this constructor directly and instead use `make_unique()`.
    */
-  unique_ptr(T* ptr) {
+  unique_ptr(T* ptr): m_ptr(ptr) {
     /* STUDENT TODO: Implement the constructor */
-    throw std::runtime_error("Not implemented: unique_ptr(T* ptr)");
+    
   }
 
   /**
    * @brief Constructs a new `unique_ptr` from `nullptr`.
    */
-  unique_ptr(std::nullptr_t) {
+  unique_ptr(std::nullptr_t): m_ptr(nullptr) {
     /* STUDENT TODO: Implement the nullptr constructor */
-    throw std::runtime_error("Not implemented: unique_ptr(std::nullptr_t)");
+   
   }
 
   /**
@@ -44,8 +44,12 @@ public:
    * @return A reference to the object.
    */
   T& operator*() {
-    /* STUDENT TODO: Implement the dereference operator */
-    throw std::runtime_error("Not implemented: operator*()");
+    if(m_ptr){
+      return *m_ptr;
+    }
+    else{
+      throw std::runtime_error("Null pointer and dereferenced");
+    }
   }
 
   /**
@@ -53,8 +57,13 @@ public:
    * @return A const reference to the object.
    */
   const T& operator*() const {
-    /* STUDENT TODO: Implement the dereference operator (const) */
-    throw std::runtime_error("Not implemented: operator*() const");
+      if(m_ptr){
+      return *m_ptr;
+    }
+    else{
+      throw std::runtime_error("Null pointer and dereferenced");
+    }
+
   }
 
   /**
@@ -63,8 +72,7 @@ public:
    * @return A pointer to the object.
    */
   T* operator->() {
-    /* STUDENT TODO: Implement the arrow operator */
-    throw std::runtime_error("Not implemented: operator->()");
+      return m_ptr;
   }
 
   /**
@@ -73,8 +81,7 @@ public:
    * @return A const pointer to the object.
    */
   const T* operator->() const {
-    /* STUDENT TODO: Implement the arrow operator */
-    throw std::runtime_error("Not implemented: operator->() const");
+    return m_ptr;
   }
 
   /**
@@ -86,7 +93,10 @@ public:
    */
   explicit operator bool() const {
     /* STUDENT TODO: Implement the boolean conversion operator */
-    throw std::runtime_error("Not implemented: operator bool() const");
+    if(m_ptr){
+      return true;
+    }
+    return false;
   }
 
   /** STUDENT TODO: In the space below, do the following:
@@ -96,6 +106,29 @@ public:
    * - Implement the move constructor
    * - Implement the move assignment operator
    */
+
+   ~unique_ptr(){
+      delete m_ptr;
+   }
+
+   unique_ptr(const unique_ptr& other) = delete;
+   unique_ptr& operator=(const unique_ptr& other) = delete;
+
+   unique_ptr(unique_ptr&& other) noexcept: m_ptr(other.m_ptr){
+    other.m_ptr = nullptr;
+
+   }
+   unique_ptr& operator=(unique_ptr&& other){
+    
+    if(this==&other){
+      return *this;
+    }
+    delete m_ptr;
+    m_ptr= other.m_ptr;
+    other.m_ptr = nullptr;
+    return *this;
+   }
+
 
   /* STUDENT TODO (Part 3): Implement equality comparisons.
    *
@@ -115,6 +148,33 @@ public:
    * Hint: declare them as `friend` inside this class so they can
    * see the private pointer, and define them inline here.
    */
+
+
+   friend bool operator==(const unique_ptr& first, const unique_ptr& second){
+      if(first.m_ptr==second.m_ptr){
+        return true;
+      }
+      else{
+        return false;
+      }
+   }
+  //  friend bool operator==(const unique_ptr& first, std::nullptr_t){
+  //   if(first==nullptr){
+  //     return true;
+  //   }
+  //   else{
+  //     return false;
+  //   }
+  //  }
+  //  friend bool operator==(std::nullptr_t ,const unique_ptr& first){
+  //   if(first==nullptr){
+  //     return true;
+  //   }
+  //   else{
+  //     return false;
+  //   }
+  //  }
+
 };
 
 /**
