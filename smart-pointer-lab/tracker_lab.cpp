@@ -145,9 +145,9 @@ int main() {
     std::cerr << "\n--- vector with move-only elements ---\n";
     {
         std::vector<Tracker<int>> v;
-        v.push_back(Tracker<int>(1));
-        v.push_back(Tracker<int>(2));
-        v.push_back(Tracker<int>(3));
+        v.push_back(std::move(Tracker<int>(1)));
+        //v.push_back(Tracker<int>(2));
+        //v.push_back(Tracker<int>(3));
         // Notice: the vector now moves elements instead of copying.
         // The log should be shorter than Stage 1's.
     }
