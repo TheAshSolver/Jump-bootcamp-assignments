@@ -66,9 +66,12 @@ struct Resource {
 // process_data allocates a Resource with raw new, does some work,
 // then deletes it. But if the work throws, the delete is skipped.
 //
-// Your prediction: ___________________________________________________________
-// ASan symptom:    ___________________________________________________________
-// Fix:             ___________________________________________________________
+// Your prediction: Resource wont be destroyed because of the throw before hand. 
+// ASan symptom:   Direct leak of 48 byte(s) in 1 object(s) allocated from:
+    // #0 0x7f7e39ee7a3b in operator new(unsigned long) (/lib64/libasan.so.8+0xe7a3b) (BuildId: d3cb6206dff19da52969c009f4cd93611901c478)
+    // #1 0x000000400948 in process_data(int) /home/aaravind/develop/jump_bootcamp/Jump-bootcamp-assignments/smart-pointer-lab/leak_hunt.cpp:80
+    // #2 0x00000040158f in main /home/aaravind/develop/jum
+// Fix: Use a unique pointer to work 
 // =============================================================================
 static void risky_work(int x) {
     if (x > 50)
@@ -77,26 +80,28 @@ static void risky_work(int x) {
 }
 
 void process_data(int x) {
-    Resource* r = new Resource("process_data", x);
+    std::unique_ptr<Resource> r = std::make_unique<Resource>("process_data", x);
 
     risky_work(x);
 
     r->describe();
-    delete r; 
+  
 }
 
 // =============================================================================
 // BUG B — ???
 //
-// Your prediction: ___________________________________________________________
-// ASan symptom:    ___________________________________________________________
-// Fix:             ___________________________________________________________
+// Your prediction: Two nodes are not destroyed due to a cyclic reference
+// ASan symptom:   Indirect leak of 40 byte(s) in 1 object(s) allocated from:
+    // #0 0x7f3d818e7a3b in operator new(unsigned long) (/lib64/libasan.so.8+0xe7a3b) (BuildId: d3cb6206dff19da52969c009f4cd93611901c478)
+    // #1 0x00000040d731 in std::__new_allocator<std::_Sp_counted_ptr_inplace<Subscriber, std::allocator<void>, (__gnu_cxx::_Lock_policy)2> >::allocate(unsigned long, void const*) /usr/include/c++/15/bits/new_allocator.h:151
+// Fix:  Change one to a weak pointer
 // =============================================================================
 struct Subscriber;
 
 struct Publisher {
     int id_;
-    std::shared_ptr<Subscriber> subscriber_; 
+    std::weak_ptr<Subscriber> subscriber_; 
 
     explicit Publisher(int id) : id_(id) {
         std::cerr << "[Publisher  #" << id_ << "] born\n";
@@ -108,7 +113,7 @@ struct Publisher {
 
 struct Subscriber {
     int id_;
-    std::shared_ptr<Publisher> publisher_;
+    std::weak_ptr<Publisher> publisher_;
 
     explicit Subscriber(int id) : id_(id) {
         std::cerr << "[Subscriber #" << id_ << "] born\n";
@@ -132,13 +137,13 @@ void run_pubsub() {
 // =============================================================================
 // BUG C — unique_ptr passed by value unnecessarily
 //
-// Your prediction: ___________________________________________________________
+// Your prediction: print_resource gets by value so a copy happens. 
 // Fix:             ___________________________________________________________
 //
 // Note: ASan won't catch this one — it's not a memory error, it's a logic
 // error. The log will show the resource dying at the wrong time.
 // =============================================================================
-void print_resource(std::unique_ptr<Resource> r) { 
+void print_resource(std::unique_ptr<Resource>& r) { 
     std::cerr << "  print_resource: ";
     r->describe();
 }
@@ -146,7 +151,7 @@ void print_resource(std::unique_ptr<Resource> r) {
 void use_resource() {
     auto r = std::make_unique<Resource>("use_resource", 77);
 
-    print_resource(std::move(r)); 
+    print_resource(r); 
 
     // What's the value of r now?
     std::cerr << "  back in use_resource, value=" << r->value_ << "\n"; 

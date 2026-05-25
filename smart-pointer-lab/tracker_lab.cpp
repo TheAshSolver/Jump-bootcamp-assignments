@@ -14,7 +14,7 @@
 #include <vector>
 #include <atomic>
 #include<stdexcept>
-
+#include<algorithm>
 // ─────────────────────────────────────────────────────────────────────────────
 // Utility: monotonically increasing ID so every Tracker has a unique name.
 // ─────────────────────────────────────────────────────────────────────────────
@@ -130,7 +130,7 @@ int main() {
 // =============================================================================
 
 // ─── Stage 2 main ─────────────────────────────────────────────────────────────
-
+/*
 int main() {
     std::cerr << "=== Stage 2: unique_ptr Tracker ===\n";
 
@@ -161,6 +161,7 @@ int main() {
 
     return 0;
 }
+*/
 
 
 // =============================================================================
@@ -187,10 +188,15 @@ public:
     void add(std::shared_ptr<Tracker<int>> t) {
         // TODO: push_back t, then log name_ + " now holds tracker " + id
         //       and print t.use_count()
+        holdings_.push_back(t);
+        std::cout << name_<<" now holds tracker " << t->id_<<std::endl;
     }
 
     void print() const {
         // TODO: implement print out for each holding in the portfolio
+        std::for_each(holdings_.begin(), holdings_.end(), [](std::shared_ptr<Tracker<int>> p){
+            std::cout<< p->get()<<std::endl;
+        });
     }
 };
 
@@ -198,10 +204,12 @@ std::shared_ptr<Tracker<int>> make_tracker(int value) {
     // TODO: produce a shared pointer
     // Q1: Why make a make_tracker function?
     // Q2: There are two ways to make a shared_ptr<Tracker<int>>. Which one is more appropriate here and is one always better?
+    std::shared_ptr<Tracker<int>> v = std::make_shared<Tracker<int>>(value);
+    return v;
 }
 
 // ─── Stage 3 main ─────────────────────────────────────────────────────────────
-/*
+
 int main() {
     std::cerr << "=== Stage 3: shared_ptr ===\n";
 
@@ -229,7 +237,7 @@ int main() {
 
     return 0;
 }
-*/
+
 
 // =============================================================================
 // STAGE 4 — Cycles: the one hole in shared_ptr.
