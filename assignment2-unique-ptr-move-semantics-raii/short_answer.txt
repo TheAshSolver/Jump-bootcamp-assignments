@@ -1,0 +1,30 @@
+Before submitting this file, make sure that there are no more TODO
+placeholders remaining in the file (and remove this comment too).
+
+Unique Pointer
+--------------
+
+Q1. List one or two benefits of using RAII to manage memory instead manually calling `new` and `delete`.
+A1. 1) No need to manually delete, so there is less chance of memory leak
+    2) No unnecessary deleting twice.
+
+Q2. When implementing move semantics for a `unique_ptr`, for example in the move constructor `unique_ptr(unique_ptr&& other)`, it is essential that we set the underlying pointer of the `other` parameter to `nullptr` before exiting the function. Explain in your own words what problem would arise if we did not.
+A2. Otherwise, both classes will delete upon deletion and that is undefined behaviour. 
+
+Q3. This method of recursive deallocation through RAII works great for small lists, but may pose a problem for longer lists. Why? Hint: what is the limit for how "deep" a recursive function's call stack can grow?
+A3. A recursize call stack has a limit, so not all the functions will be deallocated as once call stack is overfilled there will be no more destructor calls. 
+
+Q4. What does `std::move` do in this context? Why is it safe to use `std::move` and move semantics here?
+A4. std::move only returns a static cast to a rvalue reference. Only one pointer has ownership here. 
+
+Q5. Why does `operator->` return `T*` (a pointer) rather than `T&` (a reference)? Walk through what the compiler does when it sees `ptr->member`.
+A5. It returns access to the raw pointer. The compiler will return 
+
+Q6. Why does this class need BOTH `T& operator*()` and `const T& operator*() const`? Give a one-line code example that would fail to compile if one of them were missing, and explain which one.
+A6. We need our unique pointer to deal with constant variables and not constant variables.
+    const unique_ptr<T> q= BLAH...
+    cout << *T;
+    Will fail if the latter is missing.
+
+Q7. We marked `operator bool()` as `explicit`. What kind of unintended code would compile if we had left the `explicit` off? Give a concrete example.
+A7. 
