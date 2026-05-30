@@ -51,3 +51,16 @@ help:
 	@echo "  test       - run deterministic sanity check"
 	@echo "  benchmark  - time the fixed workload three times"
 	@echo "  clean      - remove binary and profiler outputs"
+	rm -f $(TARGET) gmon.out perf.data perf.data.old perf.script perf.folded flamegraph.svg
+	rm -f cachegrind.out* callgrind.out*
+
+help:
+	@echo "Targets:"
+	@echo "  all        - build with -O2 -g"
+	@echo "  debug      - build with -O0 -g"
+	@echo "  perf       - build with frame pointers for perf call stacks"
+	@echo "  gprof      - build with -O0 -g -pg for gprof"
+	@echo "  optimized  - build with -O3 -g"
+	@echo "  test       - run deterministic sanity check"
+	@echo "  benchmark  - time the fixed workload three times"
+	@echo "  clean      - remove binary and profiler outputs"
