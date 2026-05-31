@@ -111,53 +111,28 @@ static void refresh_history(std::vector<int>& history, const std::vector<Packet>
 static int branchy_score(const Packet& p, const std::vector<int>& lane_weight) {
     int score = p.reading + lane_weight[p.lane];
     int x = p.reading ^ (p.quality << 2) ^ (p.kind * 97);
-        if (x & 1) {
-        score += 19;
-    } else {
-        score -= 7;
-    }
-
-    if (x & 2) {
-        score ^= p.quality;
-    } else {
-        score += p.kind * 3;
-    }
-
-    if (x & 4) {
-        score += p.reading >> 2;
-    } else {
-        score -= p.quality >> 3;
-    }
-
-    if (x & 8) {
-        score ^= p.device_id;
-    } else {
-        score += p.lane * 5;
-    }
-
-    if (x & 16) {
-        score += 31;
-    } else {
-        score -= 11;
-    }
-
-    if (x & 32) {
-        score ^= (p.reading << 1);
-    } else {
-        score += (p.quality & 15);
-    }
-
+    score=score+19*(x&1)-7*!(x&1);
+    score = (score^(p.quality*((x&2)/2))) + p.kind*3*!((x&2)/2);
+    score = score + ((p.reading>>2) *((x&4)/4)) - ((p.quality>>3)*(!((x&4)/4)));
+    score = (score^(p.device_id*(x&8)/8)) + ((p.lane*5)*(!((x&8)/8)));
+    score = score + 31*((x&16)/16)  - 11*(!((x&16)/16));
+    score = (score^((p.reading<<1)*(x&32)/32)) + ((p.quality&15)*(!((x&32)/32)));
     return score & 4095;
 }
 
-static int chase_dependency(int start, int steps, const std::vector<int>& next, const std::vector<int>& value) {
-    int idx = start & ((int)next.size() - 1);
+static int chase_dependency(int start, const std::vector<int>& next, const std::vector<int>& value) {
+    const int* __restrict p_next = next.data();
+    const int* __restrict p_value = value.data();
+    int mask = (int)next.size() - 1;
+    int idx = start & mask;
     int total = 0;
-
-    for (int i = 0; i < steps; ++i) {
-        idx = next[idx];
-        total += value[idx];
-    }
+    idx = p_next[idx]; total += p_value[idx];
+    idx = p_next[idx]; total += p_value[idx];
+    idx = p_next[idx]; total += p_value[idx];
+    idx = p_next[idx]; total += p_value[idx];
+    idx = p_next[idx]; total += p_value[idx];
+    idx = p_next[idx]; total += p_value[idx];
+    idx = p_next[idx]; total += p_value[idx];
 
     return total;
 }
@@ -165,10 +140,9 @@ static int chase_dependency(int start, int steps, const std::vector<int>& next, 
 static int cold_column_probe(const std::vector<int>& history, int rows, int cols, int seed) {
     int sum = 0;
     int start_col = seed % cols;
-
+ for (int row = 0; row < rows; ++row) {
     for (int offset = 0; offset < cols; ++offset) {
-        int col = (start_col + offset) % cols;
-        for (int row = 0; row < rows; ++row) {
+            int col = (start_col + offset) % cols;
             sum += history[row * cols + col] & 31;
         }
     }
@@ -189,7 +163,7 @@ static long long process_packets(
         int score = branchy_score(p, lane_weight);
 
         if ((score ^ p.quality) & 7) {
-            score += chase_dependency(score + p.device_id, STEPS, dependency_next, dependency_value);
+            score += chase_dependency(score + p.device_id, dependency_next, dependency_value);
         } else {
             score += lane_weight[p.lane];
         }
@@ -230,7 +204,7 @@ int main() {
     const int lane_count = 32;
     const int packet_count = 220000;
     const int dependency_count = 1 << 18;
-    const int history_cols = 128;   // 2048 too
+    const int history_cols = 2048;   // 2048 too
     const int epochs = 6;
 
     std::vector<Packet> packets = build_packets(packet_count, device_count, lane_count);

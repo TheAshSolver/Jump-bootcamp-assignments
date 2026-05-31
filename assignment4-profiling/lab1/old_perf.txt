@@ -1,0 +1,727 @@
+# To display the perf.data header info, please use --header/--header-only options.
+#
+#
+# Total Lost Samples: 0
+#
+# Samples: 15K of event 'cpu_core/cycles/P'
+# Event count (approx.): 7765315531
+#
+# Children      Self  Command   Shared Object         Symbol                                                                                                                                                                                                                                                                                                                                                                                                                                                                 
+# ........  ........  ........  ....................  .......................................................................................................................................................................................................................................................................................................................................................................................................................................................................
+#
+    99.97%     0.00%  grid_bfs  grid_bfs              [.] _start
+            |
+            ---_start
+               __libc_start_main@@GLIBC_2.34
+               __libc_start_call_main
+               |          
+                --99.96%--main
+                          |          
+                          |--42.16%--compute_congestion_pressure(std::vector<int, std::allocator<int> > const&, int, int, int)
+                          |          |          
+                          |           --19.71%--next_pressure_value(int, int, int, int, int, int, int, int, int)
+                          |          
+                          |--41.01%--run_all_requests(std::vector<std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> >, std::allocator<std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> > > > const&, std::vector<RouteRequest, std::allocator<RouteRequest> > const&, std::vector<int, std::allocator<int> >&)
+                          |          |          
+                          |           --40.48%--shortest_path_bfs(std::vector<std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> >, std::allocator<std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> > > > const&, RouteRequest const&, std::vector<int, std::allocator<int> >&)
+                          |                     |          
+                          |                      --4.69%--asm_exc_page_fault
+                          |                                |          
+                          |                                 --3.37%--exc_page_fault
+                          |                                           |          
+                          |                                            --3.35%--do_user_addr_fault
+                          |                                                      |          
+                          |                                                       --3.16%--handle_mm_fault
+                          |                                                                 |          
+                          |                                                                  --3.09%--__handle_mm_fault
+                          |                                                                            |          
+                          |                                                                             --2.98%--do_anonymous_page
+                          |                                                                                       |          
+                          |                                                                                       |--1.39%--alloc_anon_folio
+                          |                                                                                       |          |          
+                          |                                                                                       |           --0.77%--__mem_cgroup_charge
+                          |                                                                                       |                     |          
+                          |                                                                                       |                      --0.68%--charge_memcg
+                          |                                                                                       |                                |          
+                          |                                                                                       |                                 --0.58%--memcg1_commit_charge
+                          |                                                                                       |          
+                          |                                                                                        --0.91%--__pte_offset_map_lock
+                          |                                                                                                  |          
+                          |                                                                                                   --0.71%--_raw_spin_lock
+                          |          
+                           --16.75%--next_pressure_value(int, int, int, int, int, int, int, int, int)
+
+    99.97%     0.00%  grid_bfs  libc.so.6             [.] __libc_start_main@@GLIBC_2.34
+            |
+            ---__libc_start_main@@GLIBC_2.34
+               __libc_start_call_main
+               |          
+                --99.96%--main
+                          |          
+                          |--42.16%--compute_congestion_pressure(std::vector<int, std::allocator<int> > const&, int, int, int)
+                          |          |          
+                          |           --19.71%--next_pressure_value(int, int, int, int, int, int, int, int, int)
+                          |          
+                          |--41.01%--run_all_requests(std::vector<std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> >, std::allocator<std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> > > > const&, std::vector<RouteRequest, std::allocator<RouteRequest> > const&, std::vector<int, std::allocator<int> >&)
+                          |          |          
+                          |           --40.48%--shortest_path_bfs(std::vector<std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> >, std::allocator<std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> > > > const&, RouteRequest const&, std::vector<int, std::allocator<int> >&)
+                          |                     |          
+                          |                      --4.69%--asm_exc_page_fault
+                          |                                |          
+                          |                                 --3.37%--exc_page_fault
+                          |                                           |          
+                          |                                            --3.35%--do_user_addr_fault
+                          |                                                      |          
+                          |                                                       --3.16%--handle_mm_fault
+                          |                                                                 |          
+                          |                                                                  --3.09%--__handle_mm_fault
+                          |                                                                            |          
+                          |                                                                             --2.98%--do_anonymous_page
+                          |                                                                                       |          
+                          |                                                                                       |--1.39%--alloc_anon_folio
+                          |                                                                                       |          |          
+                          |                                                                                       |           --0.77%--__mem_cgroup_charge
+                          |                                                                                       |                     |          
+                          |                                                                                       |                      --0.68%--charge_memcg
+                          |                                                                                       |                                |          
+                          |                                                                                       |                                 --0.58%--memcg1_commit_charge
+                          |                                                                                       |          
+                          |                                                                                        --0.91%--__pte_offset_map_lock
+                          |                                                                                                  |          
+                          |                                                                                                   --0.71%--_raw_spin_lock
+                          |          
+                           --16.75%--next_pressure_value(int, int, int, int, int, int, int, int, int)
+
+    99.97%     0.00%  grid_bfs  libc.so.6             [.] __libc_start_call_main
+            |
+            ---__libc_start_call_main
+               |          
+                --99.96%--main
+                          |          
+                          |--42.16%--compute_congestion_pressure(std::vector<int, std::allocator<int> > const&, int, int, int)
+                          |          |          
+                          |           --19.71%--next_pressure_value(int, int, int, int, int, int, int, int, int)
+                          |          
+                          |--41.01%--run_all_requests(std::vector<std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> >, std::allocator<std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> > > > const&, std::vector<RouteRequest, std::allocator<RouteRequest> > const&, std::vector<int, std::allocator<int> >&)
+                          |          |          
+                          |           --40.48%--shortest_path_bfs(std::vector<std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> >, std::allocator<std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> > > > const&, RouteRequest const&, std::vector<int, std::allocator<int> >&)
+                          |                     |          
+                          |                      --4.69%--asm_exc_page_fault
+                          |                                |          
+                          |                                 --3.37%--exc_page_fault
+                          |                                           |          
+                          |                                            --3.35%--do_user_addr_fault
+                          |                                                      |          
+                          |                                                       --3.16%--handle_mm_fault
+                          |                                                                 |          
+                          |                                                                  --3.09%--__handle_mm_fault
+                          |                                                                            |          
+                          |                                                                             --2.98%--do_anonymous_page
+                          |                                                                                       |          
+                          |                                                                                       |--1.39%--alloc_anon_folio
+                          |                                                                                       |          |          
+                          |                                                                                       |           --0.77%--__mem_cgroup_charge
+                          |                                                                                       |                     |          
+                          |                                                                                       |                      --0.68%--charge_memcg
+                          |                                                                                       |                                |          
+                          |                                                                                       |                                 --0.58%--memcg1_commit_charge
+                          |                                                                                       |          
+                          |                                                                                        --0.91%--__pte_offset_map_lock
+                          |                                                                                                  |          
+                          |                                                                                                   --0.71%--_raw_spin_lock
+                          |          
+                           --16.75%--next_pressure_value(int, int, int, int, int, int, int, int, int)
+
+    99.96%     0.00%  grid_bfs  grid_bfs              [.] main
+            |
+            ---main
+               |          
+               |--42.16%--compute_congestion_pressure(std::vector<int, std::allocator<int> > const&, int, int, int)
+               |          |          
+               |           --19.71%--next_pressure_value(int, int, int, int, int, int, int, int, int)
+               |          
+               |--41.01%--run_all_requests(std::vector<std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> >, std::allocator<std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> > > > const&, std::vector<RouteRequest, std::allocator<RouteRequest> > const&, std::vector<int, std::allocator<int> >&)
+               |          |          
+               |           --40.48%--shortest_path_bfs(std::vector<std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> >, std::allocator<std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> > > > const&, RouteRequest const&, std::vector<int, std::allocator<int> >&)
+               |                     |          
+               |                      --4.69%--asm_exc_page_fault
+               |                                |          
+               |                                 --3.37%--exc_page_fault
+               |                                           |          
+               |                                            --3.35%--do_user_addr_fault
+               |                                                      |          
+               |                                                       --3.16%--handle_mm_fault
+               |                                                                 |          
+               |                                                                  --3.09%--__handle_mm_fault
+               |                                                                            |          
+               |                                                                             --2.98%--do_anonymous_page
+               |                                                                                       |          
+               |                                                                                       |--1.39%--alloc_anon_folio
+               |                                                                                       |          |          
+               |                                                                                       |           --0.77%--__mem_cgroup_charge
+               |                                                                                       |                     |          
+               |                                                                                       |                      --0.68%--charge_memcg
+               |                                                                                       |                                |          
+               |                                                                                       |                                 --0.58%--memcg1_commit_charge
+               |                                                                                       |          
+               |                                                                                        --0.91%--__pte_offset_map_lock
+               |                                                                                                  |          
+               |                                                                                                   --0.71%--_raw_spin_lock
+               |          
+                --16.75%--next_pressure_value(int, int, int, int, int, int, int, int, int)
+
+    45.79%    22.71%  grid_bfs  grid_bfs              [.] compute_congestion_pressure(std::vector<int, std::allocator<int> > const&, int, int, int)
+            |          
+            |--23.08%--compute_congestion_pressure(std::vector<int, std::allocator<int> > const&, int, int, int)
+            |          |          
+            |           --19.71%--next_pressure_value(int, int, int, int, int, int, int, int, int)
+            |          
+             --22.71%--_start
+                       __libc_start_main@@GLIBC_2.34
+                       __libc_start_call_main
+                       main
+                       |          
+                       |--19.09%--compute_congestion_pressure(std::vector<int, std::allocator<int> > const&, int, int, int)
+                       |          
+                        --3.62%--next_pressure_value(int, int, int, int, int, int, int, int, int)
+
+    41.01%     0.00%  grid_bfs  grid_bfs              [.] run_all_requests(std::vector<std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> >, std::allocator<std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> > > > const&, std::vector<RouteRequest, std::allocator<RouteRequest> > const&, std::vector<int, std::allocator<int> >&)
+            |
+            ---run_all_requests(std::vector<std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> >, std::allocator<std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> > > > const&, std::vector<RouteRequest, std::allocator<RouteRequest> > const&, std::vector<int, std::allocator<int> >&)
+               |          
+                --40.48%--shortest_path_bfs(std::vector<std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> >, std::allocator<std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> > > > const&, RouteRequest const&, std::vector<int, std::allocator<int> >&)
+                          |          
+                           --4.69%--asm_exc_page_fault
+                                     |          
+                                      --3.37%--exc_page_fault
+                                                |          
+                                                 --3.35%--do_user_addr_fault
+                                                           |          
+                                                            --3.16%--handle_mm_fault
+                                                                      |          
+                                                                       --3.09%--__handle_mm_fault
+                                                                                 |          
+                                                                                  --2.98%--do_anonymous_page
+                                                                                            |          
+                                                                                            |--1.39%--alloc_anon_folio
+                                                                                            |          |          
+                                                                                            |           --0.77%--__mem_cgroup_charge
+                                                                                            |                     |          
+                                                                                            |                      --0.68%--charge_memcg
+                                                                                            |                                |          
+                                                                                            |                                 --0.58%--memcg1_commit_charge
+                                                                                            |          
+                                                                                             --0.91%--__pte_offset_map_lock
+                                                                                                       |          
+                                                                                                        --0.71%--_raw_spin_lock
+
+    40.51%    36.06%  grid_bfs  grid_bfs              [.] shortest_path_bfs(std::vector<std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> >, std::allocator<std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> > > > const&, RouteRequest const&, std::vector<int, std::allocator<int> >&)
+            |          
+            |--36.06%--_start
+            |          __libc_start_main@@GLIBC_2.34
+            |          __libc_start_call_main
+            |          main
+            |          run_all_requests(std::vector<std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> >, std::allocator<std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> > > > const&, std::vector<RouteRequest, std::allocator<RouteRequest> > const&, std::vector<int, std::allocator<int> >&)
+            |          |          
+            |           --36.04%--shortest_path_bfs(std::vector<std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> >, std::allocator<std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> > > > const&, RouteRequest const&, std::vector<int, std::allocator<int> >&)
+            |                     |          
+            |                      --0.95%--asm_exc_page_fault
+            |          
+             --4.45%--shortest_path_bfs(std::vector<std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> >, std::allocator<std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> > > > const&, RouteRequest const&, std::vector<int, std::allocator<int> >&)
+                       |          
+                        --3.74%--asm_exc_page_fault
+                                  |          
+                                   --3.37%--exc_page_fault
+                                             |          
+                                              --3.35%--do_user_addr_fault
+                                                        |          
+                                                         --3.16%--handle_mm_fault
+                                                                   |          
+                                                                    --3.09%--__handle_mm_fault
+                                                                              |          
+                                                                               --2.98%--do_anonymous_page
+                                                                                         |          
+                                                                                         |--1.39%--alloc_anon_folio
+                                                                                         |          |          
+                                                                                         |           --0.77%--__mem_cgroup_charge
+                                                                                         |                     |          
+                                                                                         |                      --0.68%--charge_memcg
+                                                                                         |                                |          
+                                                                                         |                                 --0.58%--memcg1_commit_charge
+                                                                                         |          
+                                                                                          --0.91%--__pte_offset_map_lock
+                                                                                                    |          
+                                                                                                     --0.71%--_raw_spin_lock
+
+    39.74%    35.94%  grid_bfs  grid_bfs              [.] next_pressure_value(int, int, int, int, int, int, int, int, int)
+            |          
+            |--35.94%--_start
+            |          __libc_start_main@@GLIBC_2.34
+            |          __libc_start_call_main
+            |          main
+            |          |          
+            |          |--22.93%--compute_congestion_pressure(std::vector<int, std::allocator<int> > const&, int, int, int)
+            |          |          |          
+            |          |           --19.65%--next_pressure_value(int, int, int, int, int, int, int, int, int)
+            |          |          
+            |           --13.01%--next_pressure_value(int, int, int, int, int, int, int, int, int)
+            |          
+             --3.80%--next_pressure_value(int, int, int, int, int, int, int, int, int)
+
+     4.84%     0.03%  grid_bfs  [kernel.kallsyms]     [k] asm_exc_page_fault
+            |          
+             --4.82%--asm_exc_page_fault
+                       |          
+                        --3.47%--exc_page_fault
+                                  |          
+                                   --3.44%--do_user_addr_fault
+                                             |          
+                                              --3.25%--handle_mm_fault
+                                                        |          
+                                                         --3.17%--__handle_mm_fault
+                                                                   |          
+                                                                    --3.07%--do_anonymous_page
+                                                                              |          
+                                                                              |--1.44%--alloc_anon_folio
+                                                                              |          |          
+                                                                              |          |--0.80%--__mem_cgroup_charge
+                                                                              |          |          |          
+                                                                              |          |           --0.71%--charge_memcg
+                                                                              |          |                     |          
+                                                                              |          |                      --0.61%--memcg1_commit_charge
+                                                                              |          |          
+                                                                              |           --0.51%--vma_alloc_folio_noprof
+                                                                              |                     |          
+                                                                              |                      --0.50%--alloc_pages_mpol
+                                                                              |          
+                                                                               --0.92%--__pte_offset_map_lock
+                                                                                         |          
+                                                                                          --0.71%--_raw_spin_lock
+
+     3.47%     0.02%  grid_bfs  [kernel.kallsyms]     [k] exc_page_fault
+            |          
+             --3.45%--exc_page_fault
+                       |          
+                        --3.44%--do_user_addr_fault
+                                  |          
+                                   --3.25%--handle_mm_fault
+                                             |          
+                                              --3.17%--__handle_mm_fault
+                                                        |          
+                                                         --3.07%--do_anonymous_page
+                                                                   |          
+                                                                   |--1.44%--alloc_anon_folio
+                                                                   |          |          
+                                                                   |          |--0.80%--__mem_cgroup_charge
+                                                                   |          |          |          
+                                                                   |          |           --0.71%--charge_memcg
+                                                                   |          |                     |          
+                                                                   |          |                      --0.61%--memcg1_commit_charge
+                                                                   |          |          
+                                                                   |           --0.51%--vma_alloc_folio_noprof
+                                                                   |                     |          
+                                                                   |                      --0.50%--alloc_pages_mpol
+                                                                   |          
+                                                                    --0.92%--__pte_offset_map_lock
+                                                                              |          
+                                                                               --0.71%--_raw_spin_lock
+
+     3.44%     0.06%  grid_bfs  [kernel.kallsyms]     [k] do_user_addr_fault
+            |          
+             --3.39%--do_user_addr_fault
+                       |          
+                        --3.25%--handle_mm_fault
+                                  |          
+                                   --3.17%--__handle_mm_fault
+                                             |          
+                                              --3.07%--do_anonymous_page
+                                                        |          
+                                                        |--1.44%--alloc_anon_folio
+                                                        |          |          
+                                                        |          |--0.80%--__mem_cgroup_charge
+                                                        |          |          |          
+                                                        |          |           --0.71%--charge_memcg
+                                                        |          |                     |          
+                                                        |          |                      --0.61%--memcg1_commit_charge
+                                                        |          |          
+                                                        |           --0.51%--vma_alloc_folio_noprof
+                                                        |                     |          
+                                                        |                      --0.50%--alloc_pages_mpol
+                                                        |          
+                                                         --0.92%--__pte_offset_map_lock
+                                                                   |          
+                                                                    --0.71%--_raw_spin_lock
+
+     3.25%     0.03%  grid_bfs  [kernel.kallsyms]     [k] handle_mm_fault
+            |          
+             --3.22%--handle_mm_fault
+                       |          
+                        --3.17%--__handle_mm_fault
+                                  |          
+                                   --3.07%--do_anonymous_page
+                                             |          
+                                             |--1.44%--alloc_anon_folio
+                                             |          |          
+                                             |          |--0.80%--__mem_cgroup_charge
+                                             |          |          |          
+                                             |          |           --0.71%--charge_memcg
+                                             |          |                     |          
+                                             |          |                      --0.61%--memcg1_commit_charge
+                                             |          |          
+                                             |           --0.51%--vma_alloc_folio_noprof
+                                             |                     |          
+                                             |                      --0.50%--alloc_pages_mpol
+                                             |          
+                                              --0.92%--__pte_offset_map_lock
+                                                        |          
+                                                         --0.71%--_raw_spin_lock
+
+     3.18%     0.06%  grid_bfs  [kernel.kallsyms]     [k] __handle_mm_fault
+            |          
+             --3.12%--__handle_mm_fault
+                       |          
+                        --3.07%--do_anonymous_page
+                                  |          
+                                  |--1.44%--alloc_anon_folio
+                                  |          |          
+                                  |          |--0.80%--__mem_cgroup_charge
+                                  |          |          |          
+                                  |          |           --0.71%--charge_memcg
+                                  |          |                     |          
+                                  |          |                      --0.61%--memcg1_commit_charge
+                                  |          |          
+                                  |           --0.51%--vma_alloc_folio_noprof
+                                  |                     |          
+                                  |                      --0.50%--alloc_pages_mpol
+                                  |          
+                                   --0.92%--__pte_offset_map_lock
+                                             |          
+                                              --0.71%--_raw_spin_lock
+
+     3.07%     0.13%  grid_bfs  [kernel.kallsyms]     [k] do_anonymous_page
+            |          
+             --2.94%--do_anonymous_page
+                       |          
+                       |--1.43%--alloc_anon_folio
+                       |          |          
+                       |          |--0.80%--__mem_cgroup_charge
+                       |          |          |          
+                       |          |           --0.71%--charge_memcg
+                       |          |                     |          
+                       |          |                      --0.61%--memcg1_commit_charge
+                       |          |          
+                       |           --0.51%--vma_alloc_folio_noprof
+                       |                     |          
+                       |                      --0.50%--alloc_pages_mpol
+                       |          
+                        --0.90%--__pte_offset_map_lock
+                                  |          
+                                   --0.71%--_raw_spin_lock
+
+     1.44%     0.03%  grid_bfs  [kernel.kallsyms]     [k] alloc_anon_folio
+            |          
+             --1.41%--alloc_anon_folio
+                       |          
+                       |--0.80%--__mem_cgroup_charge
+                       |          |          
+                       |           --0.71%--charge_memcg
+                       |                     |          
+                       |                      --0.61%--memcg1_commit_charge
+                       |          
+                        --0.51%--vma_alloc_folio_noprof
+                                  |          
+                                   --0.50%--alloc_pages_mpol
+
+     0.92%     0.11%  grid_bfs  [kernel.kallsyms]     [k] __pte_offset_map_lock
+            |          
+             --0.82%--__pte_offset_map_lock
+                       |          
+                        --0.71%--_raw_spin_lock
+
+     0.80%     0.03%  grid_bfs  [kernel.kallsyms]     [k] __mem_cgroup_charge
+            |          
+             --0.77%--__mem_cgroup_charge
+                       |          
+                        --0.71%--charge_memcg
+                                  |          
+                                   --0.61%--memcg1_commit_charge
+
+     0.71%     0.71%  grid_bfs  [kernel.kallsyms]     [k] _raw_spin_lock
+            |
+            ---_start
+               __libc_start_main@@GLIBC_2.34
+               __libc_start_call_main
+               main
+               run_all_requests(std::vector<std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> >, std::allocator<std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> > > > const&, std::vector<RouteRequest, std::allocator<RouteRequest> > const&, std::vector<int, std::allocator<int> >&)
+               |          
+                --0.71%--shortest_path_bfs(std::vector<std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> >, std::allocator<std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> > > > const&, RouteRequest const&, std::vector<int, std::allocator<int> >&)
+                          asm_exc_page_fault
+                          exc_page_fault
+                          do_user_addr_fault
+                          handle_mm_fault
+                          __handle_mm_fault
+                          do_anonymous_page
+                          __pte_offset_map_lock
+                          _raw_spin_lock
+
+     0.71%     0.01%  grid_bfs  [kernel.kallsyms]     [k] charge_memcg
+            |          
+             --0.70%--charge_memcg
+                       |          
+                        --0.60%--memcg1_commit_charge
+
+     0.61%     0.45%  grid_bfs  [kernel.kallsyms]     [k] memcg1_commit_charge
+     0.56%     0.00%  grid_bfs  [kernel.kallsyms]     [k] asm_sysvec_apic_timer_interrupt
+            |
+            ---asm_sysvec_apic_timer_interrupt
+
+     0.51%     0.01%  grid_bfs  [kernel.kallsyms]     [k] vma_alloc_folio_noprof
+            |          
+             --0.51%--vma_alloc_folio_noprof
+                       |          
+                        --0.50%--alloc_pages_mpol
+
+     0.51%     0.00%  grid_bfs  [kernel.kallsyms]     [k] alloc_pages_mpol
+            |
+            ---alloc_pages_mpol
+
+     0.50%     0.00%  grid_bfs  [kernel.kallsyms]     [k] sysvec_apic_timer_interrupt
+     0.48%     0.04%  grid_bfs  [kernel.kallsyms]     [k] __alloc_frozen_pages_noprof
+     0.43%     0.00%  grid_bfs  [kernel.kallsyms]     [k] __sysvec_apic_timer_interrupt
+     0.43%     0.00%  grid_bfs  [kernel.kallsyms]     [k] hrtimer_interrupt
+     0.41%     0.03%  grid_bfs  [kernel.kallsyms]     [k] get_page_from_freelist
+     0.41%     0.41%  grid_bfs  [kernel.kallsyms]     [k] native_irq_return_iret
+     0.37%     0.01%  grid_bfs  [kernel.kallsyms]     [k] __hrtimer_run_queues
+     0.35%     0.03%  grid_bfs  [kernel.kallsyms]     [k] __folio_batch_add_and_move
+     0.34%     0.34%  grid_bfs  [kernel.kallsyms]     [k] sync_regs
+     0.33%     0.01%  grid_bfs  [kernel.kallsyms]     [k] tick_nohz_handler
+     0.32%     0.04%  grid_bfs  [kernel.kallsyms]     [k] folio_batch_move_lru
+     0.30%     0.00%  grid_bfs  [kernel.kallsyms]     [k] update_process_times
+     0.29%     0.28%  grid_bfs  libc.so.6             [.] __memset_avx2_unaligned_erms
+     0.27%     0.01%  grid_bfs  [kernel.kallsyms]     [k] rmqueue.isra.0
+     0.25%     0.02%  grid_bfs  [kernel.kallsyms]     [k] rmqueue_pcplist
+     0.25%     0.11%  grid_bfs  [kernel.kallsyms]     [k] lru_add
+     0.23%     0.00%  grid_bfs  libstdc++.so.6.0.34   [.] operator new(unsigned long)
+     0.23%     0.01%  grid_bfs  libc.so.6             [.] malloc
+     0.22%     0.00%  grid_bfs  libc.so.6             [.] _int_malloc
+     0.22%     0.01%  grid_bfs  libc.so.6             [.] sysmalloc
+     0.22%     0.03%  grid_bfs  [kernel.kallsyms]     [k] __rmqueue_pcplist
+     0.20%     0.00%  grid_bfs  [kernel.kallsyms]     [k] sched_tick
+     0.19%     0.04%  grid_bfs  [kernel.kallsyms]     [k] folio_add_new_anon_rmap
+     0.17%     0.00%  grid_bfs  [kernel.kallsyms]     [k] task_tick_fair
+     0.15%     0.12%  grid_bfs  [kernel.kallsyms]     [k] count_memcg_events
+     0.15%     0.01%  grid_bfs  [kernel.kallsyms]     [k] __folio_mod_stat
+     0.13%     0.08%  grid_bfs  [kernel.kallsyms]     [k] lock_vma_under_rcu
+     0.13%     0.06%  grid_bfs  [kernel.kallsyms]     [k] lruvec_stat_mod_folio
+     0.13%     0.09%  grid_bfs  [kernel.kallsyms]     [k] ___pte_offset_map
+     0.12%     0.01%  grid_bfs  [kernel.kallsyms]     [k] post_alloc_hook
+     0.12%     0.06%  grid_bfs  [kernel.kallsyms]     [k] lru_gen_add_folio
+     0.11%     0.11%  grid_bfs  [kernel.kallsyms]     [k] clear_page_erms
+     0.11%     0.07%  grid_bfs  [kernel.kallsyms]     [k] rmqueue_bulk
+     0.10%     0.00%  grid_bfs  [kernel.kallsyms]     [k] entry_SYSCALL_64_after_hwframe
+     0.10%     0.00%  grid_bfs  [kernel.kallsyms]     [k] do_syscall_64
+     0.10%     0.10%  grid_bfs  [kernel.kallsyms]     [k] __list_del_entry_valid_or_report
+     0.10%     0.00%  grid_bfs  libc.so.6             [.] __default_morecore@GLIBC_2.2.5
+     0.10%     0.00%  grid_bfs  libc.so.6             [.] __brk
+     0.09%     0.00%  grid_bfs  [kernel.kallsyms]     [k] __do_sys_brk
+     0.09%     0.00%  grid_bfs  [kernel.kallsyms]     [k] do_brk_flags
+     0.09%     0.00%  grid_bfs  [kernel.kallsyms]     [k] __folio_throttle_swaprate
+     0.08%     0.04%  grid_bfs  [kernel.kallsyms]     [k] try_charge_memcg
+     0.08%     0.05%  grid_bfs  [kernel.kallsyms]     [k] blk_cgroup_congested
+     0.08%     0.06%  grid_bfs  [kernel.kallsyms]     [k] __rcu_read_unlock
+     0.08%     0.06%  grid_bfs  [kernel.kallsyms]     [k] __rcu_read_lock
+     0.08%     0.01%  grid_bfs  [kernel.kallsyms]     [k] perf_event_mmap
+     0.08%     0.07%  grid_bfs  [kernel.kallsyms]     [k] mod_memcg_lruvec_state
+     0.07%     0.01%  grid_bfs  [kernel.kallsyms]     [k] perf_event_mmap_event
+     0.07%     0.07%  grid_bfs  [kernel.kallsyms]     [k] error_entry
+     0.06%     0.01%  grid_bfs  [kernel.kallsyms]     [k] handle_softirqs
+     0.06%     0.00%  grid_bfs  [kernel.kallsyms]     [k] __irq_exit_rcu
+     0.06%     0.01%  grid_bfs  [kernel.kallsyms]     [k] update_curr
+     0.06%     0.00%  grid_bfs  [kernel.kallsyms]     [k] perf_iterate_sb.constprop.0
+     0.06%     0.06%  grid_bfs  [kernel.kallsyms]     [k] update_cfs_group
+     0.06%     0.01%  grid_bfs  [kernel.kallsyms]     [k] handle_pte_fault
+     0.05%     0.05%  grid_bfs  [kernel.kallsyms]     [k] perf_iterate_ctx
+     0.04%     0.00%  grid_bfs  [kernel.kallsyms]     [k] tmigr_handle_remote
+     0.04%     0.00%  grid_bfs  [kernel.kallsyms]     [k] tmigr_handle_remote_up
+     0.04%     0.00%  grid_bfs  [kernel.kallsyms]     [k] clockevents_program_event
+     0.04%     0.04%  grid_bfs  [kernel.kallsyms]     [k] mas_walk
+     0.04%     0.04%  grid_bfs  [kernel.kallsyms]     [k] css_rstat_updated
+     0.04%     0.01%  grid_bfs  [kernel.kallsyms]     [k] pte_offset_map_rw_nolock
+     0.03%     0.01%  grid_bfs  [kernel.kallsyms]     [k] __smp_call_single_queue
+     0.03%     0.00%  grid_bfs  [kernel.kallsyms]     [k] smp_call_function_single_async
+     0.03%     0.00%  grid_bfs  [kernel.kallsyms]     [k] generic_exec_single
+     0.03%     0.00%  grid_bfs  ld-linux-x86-64.so.2  [.] _dl_start_user
+     0.03%     0.00%  grid_bfs  [kernel.kallsyms]     [k] tmigr_handle_remote_cpu
+     0.03%     0.01%  grid_bfs  [kernel.kallsyms]     [k] __run_timers
+     0.03%     0.01%  grid_bfs  [kernel.kallsyms]     [k] lapic_next_deadline
+     0.03%     0.03%  grid_bfs  [kernel.kallsyms]     [k] page_counter_try_charge
+     0.03%     0.03%  grid_bfs  [kernel.kallsyms]     [k] folio_add_lru
+     0.03%     0.01%  grid_bfs  [kernel.kallsyms]     [k] policy_nodemask
+     0.03%     0.03%  grid_bfs  [kernel.kallsyms]     [k] mod_node_page_state
+     0.03%     0.02%  grid_bfs  [kernel.kallsyms]     [k] get_mem_cgroup_from_mm
+     0.03%     0.01%  grid_bfs  [kernel.kallsyms]     [k] update_load_avg
+     0.03%     0.03%  grid_bfs  [kernel.kallsyms]     [k] folios_put_refs
+     0.03%     0.00%  grid_bfs  ld-linux-x86-64.so.2  [.] _dl_start
+     0.03%     0.03%  grid_bfs  [kernel.kallsyms]     [k] call_function_single_prep_ipi
+     0.03%     0.00%  grid_bfs  ld-linux-x86-64.so.2  [.] _dl_sysdep_start
+     0.03%     0.00%  grid_bfs  ld-linux-x86-64.so.2  [.] dl_main
+     0.03%     0.00%  grid_bfs  [kernel.kallsyms]     [k] timer_expire_remote
+     0.03%     0.03%  grid_bfs  [kernel.kallsyms]     [k] _raw_spin_lock_irq
+     0.03%     0.02%  grid_bfs  [kernel.kallsyms]     [k] irqentry_exit
+     0.03%     0.02%  grid_bfs  [kernel.kallsyms]     [k] __calc_delta.constprop.0
+     0.03%     0.01%  grid_bfs  [kernel.kallsyms]     [k] memcg1_check_events
+     0.03%     0.00%  grid_bfs  [kernel.kallsyms]     [k] update_wall_time
+     0.03%     0.03%  grid_bfs  [kernel.kallsyms]     [k] __next_zones_zonelist
+     0.03%     0.03%  grid_bfs  [kernel.kallsyms]     [k] native_write_msr
+     0.02%     0.01%  grid_bfs  [kernel.kallsyms]     [k] reweight_entity
+     0.02%     0.01%  grid_bfs  [kernel.kallsyms]     [k] __timekeeping_advance
+     0.02%     0.01%  grid_bfs  [kernel.kallsyms]     [k] pte_mkwrite
+     0.02%     0.02%  grid_bfs  [kernel.kallsyms]     [k] _find_first_bit
+     0.02%     0.02%  grid_bfs  [kernel.kallsyms]     [k] mem_cgroup_from_task
+     0.02%     0.01%  grid_bfs  [kernel.kallsyms]     [k] nohz_balancer_kick
+     0.02%     0.02%  grid_bfs  [kernel.kallsyms]     [k] __update_load_avg_se
+     0.02%     0.02%  grid_bfs  [kernel.kallsyms]     [k] __raw_spin_lock_irqsave
+     0.02%     0.01%  grid_bfs  [kernel.kallsyms]     [k] mod_lruvec_state
+     0.02%     0.02%  grid_bfs  [kernel.kallsyms]     [k] _raw_spin_trylock
+     0.02%     0.02%  grid_bfs  [kernel.kallsyms]     [k] rb_erase
+     0.02%     0.00%  grid_bfs  [kernel.kallsyms]     [k] timerqueue_del
+     0.02%     0.01%  grid_bfs  [kernel.kallsyms]     [k] perf_adjust_freq_unthr_context
+     0.02%     0.00%  grid_bfs  [kernel.kallsyms]     [k] perf_event_task_tick
+     0.02%     0.00%  grid_bfs  [kernel.kallsyms]     [k] __remove_hrtimer
+     0.02%     0.01%  grid_bfs  [kernel.kallsyms]     [k] update_deadline
+     0.02%     0.00%  grid_bfs  ld-linux-x86-64.so.2  [.] _dl_relocate_object
+     0.01%     0.00%  grid_bfs  grid_bfs              [.] generate_grid[abi:cxx11](int, int)
+     0.01%     0.00%  grid_bfs  ld-linux-x86-64.so.2  [.] _dl_relocate_object_no_relro
+     0.01%     0.01%  grid_bfs  [kernel.kallsyms]     [k] timer_recalc_next_expiry
+     0.01%     0.00%  grid_bfs  [kernel.kallsyms]     [k] place_entity
+     0.01%     0.01%  grid_bfs  libstdc++.so.6.0.34   [.] operator delete(void*, unsigned long)
+     0.01%     0.01%  grid_bfs  [kernel.kallsyms]     [k] __irqentry_text_end
+     0.01%     0.01%  grid_bfs  [kernel.kallsyms]     [k] kick_ilb
+     0.01%     0.01%  grid_bfs  [kernel.kallsyms]     [k] folio_mapping
+     0.01%     0.01%  grid_bfs  [kernel.kallsyms]     [k] __list_add_valid_or_report
+     0.01%     0.01%  grid_bfs  [kernel.kallsyms]     [k] __queue_work.part.0
+     0.01%     0.00%  grid_bfs  [kernel.kallsyms]     [k] call_timer_fn
+     0.01%     0.00%  grid_bfs  [kernel.kallsyms]     [k] __pte_alloc
+     0.01%     0.01%  grid_bfs  [kernel.kallsyms]     [k] ktime_get
+     0.01%     0.00%  grid_bfs  [kernel.kallsyms]     [k] update_curr_dl_se
+     0.01%     0.01%  grid_bfs  [kernel.kallsyms]     [k] account_user_time
+     0.01%     0.01%  grid_bfs  [kernel.kallsyms]     [k] update_se
+     0.01%     0.01%  grid_bfs  [kernel.kallsyms]     [k] __pkru_allows_pkey
+     0.01%     0.01%  grid_bfs  [kernel.kallsyms]     [k] avg_vruntime
+     0.01%     0.01%  grid_bfs  grid_bfs              [.] std::mersenne_twister_engine<unsigned long, 32ul, 624ul, 397ul, 31ul, 2567483615ul, 11ul, 4294967295ul, 7ul, 2636928640ul, 15ul, 4022730752ul, 18ul, 1812433253ul>::_M_gen_rand()
+     0.01%     0.00%  grid_bfs  grid_bfs              [.] int std::uniform_int_distribution<int>::operator()<std::mersenne_twister_engine<unsigned long, 32ul, 624ul, 397ul, 31ul, 2567483615ul, 11ul, 4294967295ul, 7ul, 2636928640ul, 15ul, 4022730752ul, 18ul, 1812433253ul> >(std::mersenne_twister_engine<unsigned long, 32ul, 624ul, 397ul, 31ul, 2567483615ul, 11ul, 4294967295ul, 7ul, 2636928640ul, 15ul, 4022730752ul, 18ul, 1812433253ul>&, std::uniform_int_distribution<int>::param_type const&) [clone .isra.0]
+     0.01%     0.00%  grid_bfs  ld-linux-x86-64.so.2  [.] _dl_lookup_symbol_x
+     0.01%     0.01%  grid_bfs  [kernel.kallsyms]     [k] _find_next_bit
+     0.01%     0.01%  grid_bfs  [kernel.kallsyms]     [k] do_group_exit
+     0.01%     0.00%  grid_bfs  libc.so.6             [.] 0x00007f9dbbe2b8be
+     0.01%     0.00%  grid_bfs  libc.so.6             [.] _exit
+     0.01%     0.00%  grid_bfs  [kernel.kallsyms]     [k] x64_sys_call
+     0.01%     0.00%  grid_bfs  [kernel.kallsyms]     [k] __x64_sys_exit_group
+     0.01%     0.01%  grid_bfs  grid_bfs              [.] summarize_heatmap(std::vector<int, std::allocator<int> > const&, int, int)
+     0.01%     0.01%  grid_bfs  [kernel.kallsyms]     [k] strlen
+     0.01%     0.01%  grid_bfs  [kernel.kallsyms]     [k] timekeeping_adjust
+     0.01%     0.01%  grid_bfs  grid_bfs              [.] std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> >::_M_append(char const*, unsigned long) [clone .isra.0]
+     0.01%     0.00%  grid_bfs  grid_bfs              [.] format_route_label[abi:cxx11](RouteRequest const&, int)
+     0.01%     0.01%  grid_bfs  [kernel.kallsyms]     [k] native_apic_msr_eoi
+     0.01%     0.01%  grid_bfs  [kernel.kallsyms]     [k] sched_balance_trigger
+     0.01%     0.01%  grid_bfs  [kernel.kallsyms]     [k] timekeeping_update_from_shadow
+     0.01%     0.01%  grid_bfs  [kernel.kallsyms]     [k] update_irq_load_avg
+     0.01%     0.00%  grid_bfs  [kernel.kallsyms]     [k] update_rq_clock_task
+     0.01%     0.01%  grid_bfs  [kernel.kallsyms]     [k] ktime_get_update_offsets_now
+     0.01%     0.01%  grid_bfs  [kernel.kallsyms]     [k] __accumulate_pelt_segments
+     0.01%     0.00%  grid_bfs  [kernel.kallsyms]     [k] __update_load_avg_cfs_rq
+     0.01%     0.01%  grid_bfs  [kernel.kallsyms]     [k] mas_preallocate
+     0.01%     0.00%  grid_bfs  [kernel.kallsyms]     [k] vma_merge_new_range
+     0.01%     0.00%  grid_bfs  [kernel.kallsyms]     [k] vma_expand
+     0.01%     0.00%  grid_bfs  [kernel.kallsyms]     [k] commit_merge
+     0.01%     0.01%  grid_bfs  libc.so.6             [.] cfree@GLIBC_2.2.5
+     0.01%     0.01%  grid_bfs  [kernel.kallsyms]     [k] tmigr_requires_handle_remote
+     0.01%     0.01%  grid_bfs  [kernel.kallsyms]     [k] intel_pmu_disable_all
+     0.01%     0.01%  grid_bfs  [kernel.kallsyms]     [k] kthread_blkcg
+     0.01%     0.01%  grid_bfs  [kernel.kallsyms]     [k] arch_exit_to_user_mode_prepare.isra.0
+     0.01%     0.01%  grid_bfs  [kernel.kallsyms]     [k] record_times
+     0.01%     0.00%  grid_bfs  [kernel.kallsyms]     [k] psi_account_irqtime
+     0.01%     0.00%  grid_bfs  [kernel.kallsyms]     [k] percpu_counter_add_batch
+     0.01%     0.00%  grid_bfs  [kernel.kallsyms]     [k] run_timer_softirq
+     0.01%     0.00%  grid_bfs  [kernel.kallsyms]     [k] profile_tick
+     0.01%     0.01%  grid_bfs  [kernel.kallsyms]     [k] irq_work_run_list
+     0.01%     0.01%  grid_bfs  [kernel.kallsyms]     [k] enqueue_hrtimer
+     0.01%     0.00%  grid_bfs  [kernel.kallsyms]     [k] pte_alloc_one
+     0.01%     0.00%  grid_bfs  [kernel.kallsyms]     [k] alloc_pages_noprof
+     0.01%     0.01%  grid_bfs  [kernel.kallsyms]     [k] irqentry_enter
+     0.01%     0.01%  grid_bfs  grid_bfs              [.] operator delete(void*, unsigned long)@plt
+     0.01%     0.00%  grid_bfs  [kernel.kallsyms]     [k] rcu_core
+     0.01%     0.01%  grid_bfs  [kernel.kallsyms]     [k] psi_task_change
+     0.01%     0.00%  grid_bfs  [kernel.kallsyms]     [k] kick_pool
+     0.01%     0.00%  grid_bfs  [kernel.kallsyms]     [k] try_to_wake_up
+     0.01%     0.00%  grid_bfs  [kernel.kallsyms]     [k] ttwu_do_activate
+     0.01%     0.00%  grid_bfs  [kernel.kallsyms]     [k] enqueue_task
+     0.01%     0.01%  grid_bfs  [kernel.kallsyms]     [k] __mod_zone_page_state
+     0.01%     0.01%  grid_bfs  [kernel.kallsyms]     [k] set_ptes.isra.0
+     0.01%     0.00%  grid_bfs  [kernel.kallsyms]     [k] native_set_pte
+     0.01%     0.00%  grid_bfs  [kernel.kallsyms]     [k] ksm_vma_flags
+     0.01%     0.00%  grid_bfs  [kernel.kallsyms]     [k] rcu_core_si
+     0.01%     0.01%  grid_bfs  [kernel.kallsyms]     [k] refill_stock
+     0.01%     0.01%  grid_bfs  [kernel.kallsyms]     [k] dl_server_update
+     0.01%     0.01%  grid_bfs  [kernel.kallsyms]     [k] pmd_install
+     0.01%     0.01%  grid_bfs  [kernel.kallsyms]     [k] perf_event_mmap_output
+     0.01%     0.01%  grid_bfs  [kernel.kallsyms]     [k] idle_cpu
+     0.01%     0.00%  grid_bfs  [kernel.kallsyms]     [k] sched_use_asym_prio
+     0.01%     0.01%  grid_bfs  [kernel.kallsyms]     [k] pud_val
+     0.01%     0.01%  grid_bfs  [kernel.kallsyms]     [k] get_vma_policy
+     0.01%     0.00%  grid_bfs  [kernel.kallsyms]     [k] __intel_pmu_enable_all.isra.0
+     0.01%     0.00%  grid_bfs  [kernel.kallsyms]     [k] pfn_pte
+     0.01%     0.00%  grid_bfs  [kernel.kallsyms]     [k] hrtimer_try_to_cancel.part.0
+     0.01%     0.01%  grid_bfs  [kernel.kallsyms]     [k] __pte
+     0.01%     0.00%  grid_bfs  [kernel.kallsyms]     [k] __vm_munmap
+     0.01%     0.00%  grid_bfs  [kernel.kallsyms]     [k] do_vmi_munmap
+     0.01%     0.00%  grid_bfs  [kernel.kallsyms]     [k] do_vmi_align_munmap
+     0.01%     0.00%  grid_bfs  [kernel.kallsyms]     [k] vms_gather_munmap_vmas
+     0.01%     0.00%  grid_bfs  [kernel.kallsyms]     [k] __split_vma
+     0.01%     0.01%  grid_bfs  [kernel.kallsyms]     [k] hrtimer_update_next_event
+     0.01%     0.00%  grid_bfs  [kernel.kallsyms]     [k] __hrtimer_next_event_base
+     0.01%     0.00%  grid_bfs  ld-linux-x86-64.so.2  [.] _dl_map_object_deps
+     0.01%     0.00%  grid_bfs  ld-linux-x86-64.so.2  [.] _dl_catch_exception
+     0.01%     0.00%  grid_bfs  ld-linux-x86-64.so.2  [.] openaux
+     0.01%     0.00%  grid_bfs  ld-linux-x86-64.so.2  [.] _dl_map_object
+     0.01%     0.00%  grid_bfs  ld-linux-x86-64.so.2  [.] _dl_map_object_from_fd
+     0.01%     0.00%  grid_bfs  ld-linux-x86-64.so.2  [.] mmap64
+     0.00%     0.00%  grid_bfs  [kernel.kallsyms]     [k] mas_mab_cp
+     0.00%     0.00%  grid_bfs  libc.so.6             [.] __munmap
+     0.00%     0.00%  grid_bfs  [kernel.kallsyms]     [k] __x64_sys_munmap
+     0.00%     0.00%  grid_bfs  [kernel.kallsyms]     [k] vma_complete
+     0.00%     0.00%  grid_bfs  [kernel.kallsyms]     [k] mas_store_prealloc
+     0.00%     0.00%  grid_bfs  [kernel.kallsyms]     [k] mas_wr_bnode
+     0.00%     0.00%  grid_bfs  [kernel.kallsyms]     [k] mas_split
+     0.00%     0.00%  grid_bfs  [kernel.kallsyms]     [k] mas_push_data
+     0.00%     0.00%  grid_bfs  grid_bfs              [.] next_open_cell(std::vector<std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> >, std::allocator<std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> > > > const&, int&)
+     0.00%     0.00%  grid_bfs  grid_bfs              [.] generate_requests(std::vector<std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> >, std::allocator<std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> > > > const&, int)
+     0.00%     0.00%  grid_bfs  grid_bfs              [.] std::mersenne_twister_engine<unsigned long, 32ul, 624ul, 397ul, 31ul, 2567483615ul, 11ul, 4294967295ul, 7ul, 2636928640ul, 15ul, 4022730752ul, 18ul, 1812433253ul>::operator()()
+     0.00%     0.00%  grid_bfs  ld-linux-x86-64.so.2  [.] _dl_init
+     0.00%     0.00%  grid_bfs  libstdc++.so.6.0.34   [.] std::ios_base_library_init()
+     0.00%     0.00%  grid_bfs  ld-linux-x86-64.so.2  [.] do_lookup_x
+     0.00%     0.00%  grid_bfs  libm.so.6             [.] __acos_finite
+     0.00%     0.00%  grid_bfs  ld-linux-x86-64.so.2  [.] _dl_allocate_tls_storage
+     0.00%     0.00%  grid_bfs  ld-linux-x86-64.so.2  [.] init_tls
+     0.00%     0.00%  grid_bfs  [kernel.kallsyms]     [k] vma_interval_tree_insert
+     0.00%     0.00%  grid_bfs  [kernel.kallsyms]     [k] ksys_mmap_pgoff
+     0.00%     0.00%  grid_bfs  [kernel.kallsyms]     [k] vm_mmap_pgoff
+     0.00%     0.00%  grid_bfs  [kernel.kallsyms]     [k] do_mmap
+     0.00%     0.00%  grid_bfs  [kernel.kallsyms]     [k] __mmap_region
+     0.00%     0.00%  grid_bfs  [kernel.kallsyms]     [k] __mmap_new_vma
+     0.00%     0.00%  grid_bfs  ld-linux-x86-64.so.2  [.] memset
+     0.00%     0.00%  grid_bfs  [kernel.kallsyms]     [k] vma_interval_tree_remove
+     0.00%     0.00%  grid_bfs  [unknown]             [k] 0x00007f3d9cb17e4b
+     0.00%     0.00%  grid_bfs  [kernel.kallsyms]     [k] __x64_sys_execve
+     0.00%     0.00%  grid_bfs  [kernel.kallsyms]     [k] do_execveat_common.isra.0
+     0.00%     0.00%  grid_bfs  [kernel.kallsyms]     [k] bprm_execve.part.0
+     0.00%     0.00%  grid_bfs  [kernel.kallsyms]     [k] exec_binprm
+     0.00%     0.00%  grid_bfs  [kernel.kallsyms]     [k] load_elf_binary
+     0.00%     0.00%  grid_bfs  [kernel.kallsyms]     [k] load_elf_interp.isra.0
+     0.00%     0.00%  grid_bfs  [kernel.kallsyms]     [k] elf_load
+     0.00%     0.00%  grid_bfs  [kernel.kallsyms]     [k] vma_prepare
+
+
+#
+# (Tip: If call chains don't work try perf record --call-graph dwarf or --call-graph lbr)
+#

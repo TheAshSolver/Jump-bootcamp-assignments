@@ -1,0 +1,817 @@
+# To display the perf.data header info, please use --header/--header-only options.
+#
+#
+# Total Lost Samples: 0
+#
+# Samples: 1K of event 'cpu_core/cycles/P'
+# Event count (approx.): 1004347157
+#
+# Children      Self  Command  Shared Object         Symbol                                                                                                                                                                                                                                                                      
+# ........  ........  .......  ....................  ............................................................................................................................................................................................................................................................................
+#
+    99.63%     0.00%  main     main                  [.] _start
+            |
+            ---_start
+               __libc_start_main@@GLIBC_2.34
+               __libc_start_call_main
+               |          
+                --99.55%--main
+                          |          
+                          |--84.96%--run_epoch(std::vector<Packet, std::allocator<Packet> >&, std::vector<int, std::allocator<int> > const&, std::vector<int, std::allocator<int> > const&, std::vector<int, std::allocator<int> > const&, std::vector<int, std::allocator<int> >&, int) [clone .constprop.0]
+                          |          |          
+                          |          |--52.73%--process_packets(std::vector<Packet, std::allocator<Packet> > const&, std::vector<int, std::allocator<int> > const&, std::vector<int, std::allocator<int> > const&, std::vector<int, std::allocator<int> > const&) [clone .isra.0]
+                          |          |          |          
+                          |          |          |--31.06%--chase_dependency(int, std::vector<int, std::allocator<int> > const&, std::vector<int, std::allocator<int> > const&) [clone .isra.0]
+                          |          |          |          |          
+                          |          |          |          |--15.22%--__mcount_internal
+                          |          |          |          |          
+                          |          |          |          |--3.08%--_mcount
+                          |          |          |          |          
+                          |          |          |           --0.59%--mcount@plt
+                          |          |          |          
+                          |          |          |--9.70%--__mcount_internal
+                          |          |          |          
+                          |          |          |--7.05%--branchy_score(Packet const&, std::vector<int, std::allocator<int> > const&) [clone .isra.0]
+                          |          |          |          |          
+                          |          |          |          |--3.16%--__mcount_internal
+                          |          |          |          |          
+                          |          |          |           --1.03%--_mcount
+                          |          |          |          
+                          |          |          |--2.13%--_mcount
+                          |          |          |          
+                          |          |           --0.52%--mcount@plt
+                          |          |          
+                          |          |--21.49%--refresh_history(std::vector<int, std::allocator<int> >&, std::vector<Packet, std::allocator<Packet> > const&, int) [clone .constprop.0]
+                          |          |          |          
+                          |          |          |--14.03%--__mcount_internal
+                          |          |          |          
+                          |          |           --2.78%--_mcount
+                          |          |          
+                          |           --9.64%--cold_column_probe(std::vector<int, std::allocator<int> > const&, int, int, int) [clone .constprop.0] [clone .isra.0]
+                          |                     |          
+                          |                     |--7.36%--__mcount_internal
+                          |                     |          
+                          |                      --1.39%--_mcount
+                          |          
+                          |--6.84%--build_dependency_next(int) [clone .constprop.0]
+                          |          |          
+                          |          |--5.11%--__mcount_internal
+                          |          |          
+                          |           --0.64%--_mcount
+                          |          
+                          |--3.45%--std::vector<int, std::allocator<int> >::_M_fill_initialize(unsigned long, int const&)
+                          |          |          
+                          |           --3.16%--int* std::__do_uninit_fill_n<int*, unsigned long, int>(int*, unsigned long, int const&)
+                          |                     |          
+                          |                     |--1.72%--__mcount_internal
+                          |                     |          
+                          |                      --1.08%--void std::_Construct<int, int const&>(int*, int const&) [clone .isra.0]
+                          |                                |          
+                          |                                 --0.58%--__mcount_internal
+                          |          
+                          |--1.99%--build_packets(int, int, int) [clone .constprop.0]
+                          |          |          
+                          |          |--0.87%--__mcount_internal
+                          |          |          
+                          |           --0.77%--std::vector<Packet, std::allocator<Packet> >::_M_default_initialize(unsigned long)
+                          |                     Packet* std::__uninitialized_default_n_1<true>::__uninit_default_n<Packet*, unsigned long>(Packet*, unsigned long)
+                          |                     void std::__fill_a1<Packet*, Packet>(Packet*, Packet*, Packet const&)
+                          |                     asm_exc_page_fault
+                          |          
+                           --1.73%--build_dependency_value(int) [clone .constprop.0]
+                                     |          
+                                      --1.52%--__mcount_internal
+
+    99.63%     0.00%  main     libc.so.6             [.] __libc_start_main@@GLIBC_2.34
+            |
+            ---__libc_start_main@@GLIBC_2.34
+               __libc_start_call_main
+               |          
+                --99.55%--main
+                          |          
+                          |--84.96%--run_epoch(std::vector<Packet, std::allocator<Packet> >&, std::vector<int, std::allocator<int> > const&, std::vector<int, std::allocator<int> > const&, std::vector<int, std::allocator<int> > const&, std::vector<int, std::allocator<int> >&, int) [clone .constprop.0]
+                          |          |          
+                          |          |--52.73%--process_packets(std::vector<Packet, std::allocator<Packet> > const&, std::vector<int, std::allocator<int> > const&, std::vector<int, std::allocator<int> > const&, std::vector<int, std::allocator<int> > const&) [clone .isra.0]
+                          |          |          |          
+                          |          |          |--31.06%--chase_dependency(int, std::vector<int, std::allocator<int> > const&, std::vector<int, std::allocator<int> > const&) [clone .isra.0]
+                          |          |          |          |          
+                          |          |          |          |--15.22%--__mcount_internal
+                          |          |          |          |          
+                          |          |          |          |--3.08%--_mcount
+                          |          |          |          |          
+                          |          |          |           --0.59%--mcount@plt
+                          |          |          |          
+                          |          |          |--9.70%--__mcount_internal
+                          |          |          |          
+                          |          |          |--7.05%--branchy_score(Packet const&, std::vector<int, std::allocator<int> > const&) [clone .isra.0]
+                          |          |          |          |          
+                          |          |          |          |--3.16%--__mcount_internal
+                          |          |          |          |          
+                          |          |          |           --1.03%--_mcount
+                          |          |          |          
+                          |          |          |--2.13%--_mcount
+                          |          |          |          
+                          |          |           --0.52%--mcount@plt
+                          |          |          
+                          |          |--21.49%--refresh_history(std::vector<int, std::allocator<int> >&, std::vector<Packet, std::allocator<Packet> > const&, int) [clone .constprop.0]
+                          |          |          |          
+                          |          |          |--14.03%--__mcount_internal
+                          |          |          |          
+                          |          |           --2.78%--_mcount
+                          |          |          
+                          |           --9.64%--cold_column_probe(std::vector<int, std::allocator<int> > const&, int, int, int) [clone .constprop.0] [clone .isra.0]
+                          |                     |          
+                          |                     |--7.36%--__mcount_internal
+                          |                     |          
+                          |                      --1.39%--_mcount
+                          |          
+                          |--6.84%--build_dependency_next(int) [clone .constprop.0]
+                          |          |          
+                          |          |--5.11%--__mcount_internal
+                          |          |          
+                          |           --0.64%--_mcount
+                          |          
+                          |--3.45%--std::vector<int, std::allocator<int> >::_M_fill_initialize(unsigned long, int const&)
+                          |          |          
+                          |           --3.16%--int* std::__do_uninit_fill_n<int*, unsigned long, int>(int*, unsigned long, int const&)
+                          |                     |          
+                          |                     |--1.72%--__mcount_internal
+                          |                     |          
+                          |                      --1.08%--void std::_Construct<int, int const&>(int*, int const&) [clone .isra.0]
+                          |                                |          
+                          |                                 --0.58%--__mcount_internal
+                          |          
+                          |--1.99%--build_packets(int, int, int) [clone .constprop.0]
+                          |          |          
+                          |          |--0.87%--__mcount_internal
+                          |          |          
+                          |           --0.77%--std::vector<Packet, std::allocator<Packet> >::_M_default_initialize(unsigned long)
+                          |                     Packet* std::__uninitialized_default_n_1<true>::__uninit_default_n<Packet*, unsigned long>(Packet*, unsigned long)
+                          |                     void std::__fill_a1<Packet*, Packet>(Packet*, Packet*, Packet const&)
+                          |                     asm_exc_page_fault
+                          |          
+                           --1.73%--build_dependency_value(int) [clone .constprop.0]
+                                     |          
+                                      --1.52%--__mcount_internal
+
+    99.63%     0.00%  main     libc.so.6             [.] __libc_start_call_main
+            |
+            ---__libc_start_call_main
+               |          
+                --99.55%--main
+                          |          
+                          |--84.96%--run_epoch(std::vector<Packet, std::allocator<Packet> >&, std::vector<int, std::allocator<int> > const&, std::vector<int, std::allocator<int> > const&, std::vector<int, std::allocator<int> > const&, std::vector<int, std::allocator<int> >&, int) [clone .constprop.0]
+                          |          |          
+                          |          |--52.73%--process_packets(std::vector<Packet, std::allocator<Packet> > const&, std::vector<int, std::allocator<int> > const&, std::vector<int, std::allocator<int> > const&, std::vector<int, std::allocator<int> > const&) [clone .isra.0]
+                          |          |          |          
+                          |          |          |--31.06%--chase_dependency(int, std::vector<int, std::allocator<int> > const&, std::vector<int, std::allocator<int> > const&) [clone .isra.0]
+                          |          |          |          |          
+                          |          |          |          |--15.22%--__mcount_internal
+                          |          |          |          |          
+                          |          |          |          |--3.08%--_mcount
+                          |          |          |          |          
+                          |          |          |           --0.59%--mcount@plt
+                          |          |          |          
+                          |          |          |--9.70%--__mcount_internal
+                          |          |          |          
+                          |          |          |--7.05%--branchy_score(Packet const&, std::vector<int, std::allocator<int> > const&) [clone .isra.0]
+                          |          |          |          |          
+                          |          |          |          |--3.16%--__mcount_internal
+                          |          |          |          |          
+                          |          |          |           --1.03%--_mcount
+                          |          |          |          
+                          |          |          |--2.13%--_mcount
+                          |          |          |          
+                          |          |           --0.52%--mcount@plt
+                          |          |          
+                          |          |--21.49%--refresh_history(std::vector<int, std::allocator<int> >&, std::vector<Packet, std::allocator<Packet> > const&, int) [clone .constprop.0]
+                          |          |          |          
+                          |          |          |--14.03%--__mcount_internal
+                          |          |          |          
+                          |          |           --2.78%--_mcount
+                          |          |          
+                          |           --9.64%--cold_column_probe(std::vector<int, std::allocator<int> > const&, int, int, int) [clone .constprop.0] [clone .isra.0]
+                          |                     |          
+                          |                     |--7.36%--__mcount_internal
+                          |                     |          
+                          |                      --1.39%--_mcount
+                          |          
+                          |--6.84%--build_dependency_next(int) [clone .constprop.0]
+                          |          |          
+                          |          |--5.11%--__mcount_internal
+                          |          |          
+                          |           --0.64%--_mcount
+                          |          
+                          |--3.45%--std::vector<int, std::allocator<int> >::_M_fill_initialize(unsigned long, int const&)
+                          |          |          
+                          |           --3.16%--int* std::__do_uninit_fill_n<int*, unsigned long, int>(int*, unsigned long, int const&)
+                          |                     |          
+                          |                     |--1.72%--__mcount_internal
+                          |                     |          
+                          |                      --1.08%--void std::_Construct<int, int const&>(int*, int const&) [clone .isra.0]
+                          |                                |          
+                          |                                 --0.58%--__mcount_internal
+                          |          
+                          |--1.99%--build_packets(int, int, int) [clone .constprop.0]
+                          |          |          
+                          |          |--0.87%--__mcount_internal
+                          |          |          
+                          |           --0.77%--std::vector<Packet, std::allocator<Packet> >::_M_default_initialize(unsigned long)
+                          |                     Packet* std::__uninitialized_default_n_1<true>::__uninit_default_n<Packet*, unsigned long>(Packet*, unsigned long)
+                          |                     void std::__fill_a1<Packet*, Packet>(Packet*, Packet*, Packet const&)
+                          |                     asm_exc_page_fault
+                          |          
+                           --1.73%--build_dependency_value(int) [clone .constprop.0]
+                                     |          
+                                      --1.52%--__mcount_internal
+
+    99.55%     0.00%  main     main                  [.] main
+            |
+            ---main
+               |          
+               |--84.96%--run_epoch(std::vector<Packet, std::allocator<Packet> >&, std::vector<int, std::allocator<int> > const&, std::vector<int, std::allocator<int> > const&, std::vector<int, std::allocator<int> > const&, std::vector<int, std::allocator<int> >&, int) [clone .constprop.0]
+               |          |          
+               |          |--52.73%--process_packets(std::vector<Packet, std::allocator<Packet> > const&, std::vector<int, std::allocator<int> > const&, std::vector<int, std::allocator<int> > const&, std::vector<int, std::allocator<int> > const&) [clone .isra.0]
+               |          |          |          
+               |          |          |--31.06%--chase_dependency(int, std::vector<int, std::allocator<int> > const&, std::vector<int, std::allocator<int> > const&) [clone .isra.0]
+               |          |          |          |          
+               |          |          |          |--15.22%--__mcount_internal
+               |          |          |          |          
+               |          |          |          |--3.08%--_mcount
+               |          |          |          |          
+               |          |          |           --0.59%--mcount@plt
+               |          |          |          
+               |          |          |--9.70%--__mcount_internal
+               |          |          |          
+               |          |          |--7.05%--branchy_score(Packet const&, std::vector<int, std::allocator<int> > const&) [clone .isra.0]
+               |          |          |          |          
+               |          |          |          |--3.16%--__mcount_internal
+               |          |          |          |          
+               |          |          |           --1.03%--_mcount
+               |          |          |          
+               |          |          |--2.13%--_mcount
+               |          |          |          
+               |          |           --0.52%--mcount@plt
+               |          |          
+               |          |--21.49%--refresh_history(std::vector<int, std::allocator<int> >&, std::vector<Packet, std::allocator<Packet> > const&, int) [clone .constprop.0]
+               |          |          |          
+               |          |          |--14.03%--__mcount_internal
+               |          |          |          
+               |          |           --2.78%--_mcount
+               |          |          
+               |           --9.64%--cold_column_probe(std::vector<int, std::allocator<int> > const&, int, int, int) [clone .constprop.0] [clone .isra.0]
+               |                     |          
+               |                     |--7.36%--__mcount_internal
+               |                     |          
+               |                      --1.39%--_mcount
+               |          
+               |--6.84%--build_dependency_next(int) [clone .constprop.0]
+               |          |          
+               |          |--5.11%--__mcount_internal
+               |          |          
+               |           --0.64%--_mcount
+               |          
+               |--3.45%--std::vector<int, std::allocator<int> >::_M_fill_initialize(unsigned long, int const&)
+               |          |          
+               |           --3.16%--int* std::__do_uninit_fill_n<int*, unsigned long, int>(int*, unsigned long, int const&)
+               |                     |          
+               |                     |--1.72%--__mcount_internal
+               |                     |          
+               |                      --1.08%--void std::_Construct<int, int const&>(int*, int const&) [clone .isra.0]
+               |                                |          
+               |                                 --0.58%--__mcount_internal
+               |          
+               |--1.99%--build_packets(int, int, int) [clone .constprop.0]
+               |          |          
+               |          |--0.87%--__mcount_internal
+               |          |          
+               |           --0.77%--std::vector<Packet, std::allocator<Packet> >::_M_default_initialize(unsigned long)
+               |                     Packet* std::__uninitialized_default_n_1<true>::__uninit_default_n<Packet*, unsigned long>(Packet*, unsigned long)
+               |                     void std::__fill_a1<Packet*, Packet>(Packet*, Packet*, Packet const&)
+               |                     asm_exc_page_fault
+               |          
+                --1.73%--build_dependency_value(int) [clone .constprop.0]
+                          |          
+                           --1.52%--__mcount_internal
+
+    84.96%     0.00%  main     main                  [.] run_epoch(std::vector<Packet, std::allocator<Packet> >&, std::vector<int, std::allocator<int> > const&, std::vector<int, std::allocator<int> > const&, std::vector<int, std::allocator<int> > const&, std::vector<int, std::allocator<int> >&, int) [clone .constprop.0]
+            |
+            ---run_epoch(std::vector<Packet, std::allocator<Packet> >&, std::vector<int, std::allocator<int> > const&, std::vector<int, std::allocator<int> > const&, std::vector<int, std::allocator<int> > const&, std::vector<int, std::allocator<int> >&, int) [clone .constprop.0]
+               |          
+               |--52.73%--process_packets(std::vector<Packet, std::allocator<Packet> > const&, std::vector<int, std::allocator<int> > const&, std::vector<int, std::allocator<int> > const&, std::vector<int, std::allocator<int> > const&) [clone .isra.0]
+               |          |          
+               |          |--31.06%--chase_dependency(int, std::vector<int, std::allocator<int> > const&, std::vector<int, std::allocator<int> > const&) [clone .isra.0]
+               |          |          |          
+               |          |          |--15.22%--__mcount_internal
+               |          |          |          
+               |          |          |--3.08%--_mcount
+               |          |          |          
+               |          |           --0.59%--mcount@plt
+               |          |          
+               |          |--9.70%--__mcount_internal
+               |          |          
+               |          |--7.05%--branchy_score(Packet const&, std::vector<int, std::allocator<int> > const&) [clone .isra.0]
+               |          |          |          
+               |          |          |--3.16%--__mcount_internal
+               |          |          |          
+               |          |           --1.03%--_mcount
+               |          |          
+               |          |--2.13%--_mcount
+               |          |          
+               |           --0.52%--mcount@plt
+               |          
+               |--21.49%--refresh_history(std::vector<int, std::allocator<int> >&, std::vector<Packet, std::allocator<Packet> > const&, int) [clone .constprop.0]
+               |          |          
+               |          |--14.03%--__mcount_internal
+               |          |          
+               |           --2.78%--_mcount
+               |          
+                --9.64%--cold_column_probe(std::vector<int, std::allocator<int> > const&, int, int, int) [clone .constprop.0] [clone .isra.0]
+                          |          
+                          |--7.36%--__mcount_internal
+                          |          
+                           --1.39%--_mcount
+
+    61.52%    58.59%  main     libc.so.6             [.] __mcount_internal
+            |          
+            |--58.59%--_start
+            |          __libc_start_main@@GLIBC_2.34
+            |          __libc_start_call_main
+            |          main
+            |          |          
+            |          |--49.01%--run_epoch(std::vector<Packet, std::allocator<Packet> >&, std::vector<int, std::allocator<int> > const&, std::vector<int, std::allocator<int> > const&, std::vector<int, std::allocator<int> > const&, std::vector<int, std::allocator<int> >&, int) [clone .constprop.0]
+            |          |          |          
+            |          |          |--27.04%--process_packets(std::vector<Packet, std::allocator<Packet> > const&, std::vector<int, std::allocator<int> > const&, std::vector<int, std::allocator<int> > const&, std::vector<int, std::allocator<int> > const&) [clone .isra.0]
+            |          |          |          |          
+            |          |          |          |--14.84%--chase_dependency(int, std::vector<int, std::allocator<int> > const&, std::vector<int, std::allocator<int> > const&) [clone .isra.0]
+            |          |          |          |          |          
+            |          |          |          |           --14.48%--__mcount_internal
+            |          |          |          |          
+            |          |          |          |--8.52%--__mcount_internal
+            |          |          |          |          
+            |          |          |          |--3.16%--branchy_score(Packet const&, std::vector<int, std::allocator<int> > const&) [clone .isra.0]
+            |          |          |          |          |          
+            |          |          |          |           --3.08%--__mcount_internal
+            |          |          |          |          
+            |          |          |           --0.52%--_mcount
+            |          |          |          
+            |          |          |--14.25%--refresh_history(std::vector<int, std::allocator<int> >&, std::vector<Packet, std::allocator<Packet> > const&, int) [clone .constprop.0]
+            |          |          |          |          
+            |          |          |          |--13.51%--__mcount_internal
+            |          |          |          |          
+            |          |          |           --0.73%--_mcount
+            |          |          |          
+            |          |           --7.73%--cold_column_probe(std::vector<int, std::allocator<int> > const&, int, int, int) [clone .constprop.0] [clone .isra.0]
+            |          |                     |          
+            |          |                      --7.36%--__mcount_internal
+            |          |          
+            |          |--5.11%--build_dependency_next(int) [clone .constprop.0]
+            |          |          |          
+            |          |           --4.96%--__mcount_internal
+            |          |          
+            |          |--2.23%--std::vector<int, std::allocator<int> >::_M_fill_initialize(unsigned long, int const&)
+            |          |          int* std::__do_uninit_fill_n<int*, unsigned long, int>(int*, unsigned long, int const&)
+            |          |          |          
+            |          |          |--1.65%--__mcount_internal
+            |          |          |          
+            |          |           --0.58%--void std::_Construct<int, int const&>(int*, int const&) [clone .isra.0]
+            |          |                     __mcount_internal
+            |          |          
+            |          |--1.52%--build_dependency_value(int) [clone .constprop.0]
+            |          |          |          
+            |          |           --1.44%--__mcount_internal
+            |          |          
+            |           --0.72%--build_packets(int, int, int) [clone .constprop.0]
+            |                     __mcount_internal
+            |          
+             --2.93%--__mcount_internal
+
+    53.39%     1.55%  main     main                  [.] process_packets(std::vector<Packet, std::allocator<Packet> > const&, std::vector<int, std::allocator<int> > const&, std::vector<int, std::allocator<int> > const&, std::vector<int, std::allocator<int> > const&) [clone .isra.0]
+            |          
+            |--51.84%--process_packets(std::vector<Packet, std::allocator<Packet> > const&, std::vector<int, std::allocator<int> > const&, std::vector<int, std::allocator<int> > const&, std::vector<int, std::allocator<int> > const&) [clone .isra.0]
+            |          |          
+            |          |--31.06%--chase_dependency(int, std::vector<int, std::allocator<int> > const&, std::vector<int, std::allocator<int> > const&) [clone .isra.0]
+            |          |          |          
+            |          |          |--15.22%--__mcount_internal
+            |          |          |          
+            |          |          |--3.08%--_mcount
+            |          |          |          
+            |          |           --0.59%--mcount@plt
+            |          |          
+            |          |--9.70%--__mcount_internal
+            |          |          
+            |          |--7.05%--branchy_score(Packet const&, std::vector<int, std::allocator<int> > const&) [clone .isra.0]
+            |          |          |          
+            |          |          |--3.16%--__mcount_internal
+            |          |          |          
+            |          |           --1.03%--_mcount
+            |          |          
+            |          |--2.13%--_mcount
+            |          |          
+            |           --0.52%--mcount@plt
+            |          
+             --1.55%--_start
+                       __libc_start_main@@GLIBC_2.34
+                       __libc_start_call_main
+                       main
+                       run_epoch(std::vector<Packet, std::allocator<Packet> >&, std::vector<int, std::allocator<int> > const&, std::vector<int, std::allocator<int> > const&, std::vector<int, std::allocator<int> > const&, std::vector<int, std::allocator<int> >&, int) [clone .constprop.0]
+                       |          
+                        --0.88%--process_packets(std::vector<Packet, std::allocator<Packet> > const&, std::vector<int, std::allocator<int> > const&, std::vector<int, std::allocator<int> > const&, std::vector<int, std::allocator<int> > const&) [clone .isra.0]
+
+    32.01%    11.81%  main     main                  [.] chase_dependency(int, std::vector<int, std::allocator<int> > const&, std::vector<int, std::allocator<int> > const&) [clone .isra.0]
+            |          
+            |--20.20%--chase_dependency(int, std::vector<int, std::allocator<int> > const&, std::vector<int, std::allocator<int> > const&) [clone .isra.0]
+            |          |          
+            |          |--15.22%--__mcount_internal
+            |          |          
+            |          |--3.08%--_mcount
+            |          |          
+            |           --0.59%--mcount@plt
+            |          
+             --11.81%--_start
+                       __libc_start_main@@GLIBC_2.34
+                       __libc_start_call_main
+                       main
+                       run_epoch(std::vector<Packet, std::allocator<Packet> >&, std::vector<int, std::allocator<int> > const&, std::vector<int, std::allocator<int> > const&, std::vector<int, std::allocator<int> > const&, std::vector<int, std::allocator<int> >&, int) [clone .constprop.0]
+                       process_packets(std::vector<Packet, std::allocator<Packet> > const&, std::vector<int, std::allocator<int> > const&, std::vector<int, std::allocator<int> > const&, std::vector<int, std::allocator<int> > const&) [clone .isra.0]
+                       |          
+                        --11.07%--chase_dependency(int, std::vector<int, std::allocator<int> > const&, std::vector<int, std::allocator<int> > const&) [clone .isra.0]
+
+    21.79%     4.26%  main     main                  [.] refresh_history(std::vector<int, std::allocator<int> >&, std::vector<Packet, std::allocator<Packet> > const&, int) [clone .constprop.0]
+            |          
+            |--17.53%--refresh_history(std::vector<int, std::allocator<int> >&, std::vector<Packet, std::allocator<Packet> > const&, int) [clone .constprop.0]
+            |          |          
+            |          |--14.03%--__mcount_internal
+            |          |          
+            |           --2.78%--_mcount
+            |          
+             --4.26%--_start
+                       __libc_start_main@@GLIBC_2.34
+                       __libc_start_call_main
+                       main
+                       run_epoch(std::vector<Packet, std::allocator<Packet> >&, std::vector<int, std::allocator<int> > const&, std::vector<int, std::allocator<int> > const&, std::vector<int, std::allocator<int> > const&, std::vector<int, std::allocator<int> >&, int) [clone .constprop.0]
+                       |          
+                        --3.96%--refresh_history(std::vector<int, std::allocator<int> >&, std::vector<Packet, std::allocator<Packet> > const&, int) [clone .constprop.0]
+
+    16.16%    11.71%  main     libc.so.6             [.] _mcount
+            |          
+            |--11.71%--_start
+            |          __libc_start_main@@GLIBC_2.34
+            |          __libc_start_call_main
+            |          main
+            |          |          
+            |          |--10.42%--run_epoch(std::vector<Packet, std::allocator<Packet> >&, std::vector<int, std::allocator<int> > const&, std::vector<int, std::allocator<int> > const&, std::vector<int, std::allocator<int> > const&, std::vector<int, std::allocator<int> >&, int) [clone .constprop.0]
+            |          |          |          
+            |          |          |--7.06%--process_packets(std::vector<Packet, std::allocator<Packet> > const&, std::vector<int, std::allocator<int> > const&, std::vector<int, std::allocator<int> > const&, std::vector<int, std::allocator<int> > const&) [clone .isra.0]
+            |          |          |          |          
+            |          |          |          |--3.46%--chase_dependency(int, std::vector<int, std::allocator<int> > const&, std::vector<int, std::allocator<int> > const&) [clone .isra.0]
+            |          |          |          |          |          
+            |          |          |          |          |--2.20%--_mcount
+            |          |          |          |          |          
+            |          |          |          |           --0.74%--__mcount_internal
+            |          |          |          |          
+            |          |          |          |--1.25%--_mcount
+            |          |          |          |          
+            |          |          |          |--1.10%--__mcount_internal
+            |          |          |          |          
+            |          |          |           --1.03%--branchy_score(Packet const&, std::vector<int, std::allocator<int> > const&) [clone .isra.0]
+            |          |          |                     |          
+            |          |          |                      --0.66%--_mcount
+            |          |          |          
+            |          |          |--2.56%--refresh_history(std::vector<int, std::allocator<int> >&, std::vector<Packet, std::allocator<Packet> > const&, int) [clone .constprop.0]
+            |          |          |          |          
+            |          |          |          |--1.68%--_mcount
+            |          |          |          |          
+            |          |          |           --0.51%--__mcount_internal
+            |          |          |          
+            |          |           --0.81%--cold_column_probe(std::vector<int, std::allocator<int> > const&, int, int, int) [clone .constprop.0] [clone .isra.0]
+            |          |                     _mcount
+            |          |          
+            |           --0.57%--build_dependency_next(int) [clone .constprop.0]
+            |          
+             --4.45%--_mcount
+
+     9.64%     0.37%  main     main                  [.] cold_column_probe(std::vector<int, std::allocator<int> > const&, int, int, int) [clone .constprop.0] [clone .isra.0]
+            |          
+             --9.27%--cold_column_probe(std::vector<int, std::allocator<int> > const&, int, int, int) [clone .constprop.0] [clone .isra.0]
+                       |          
+                       |--7.36%--__mcount_internal
+                       |          
+                        --1.39%--_mcount
+
+     7.78%     2.79%  main     main                  [.] branchy_score(Packet const&, std::vector<int, std::allocator<int> > const&) [clone .isra.0]
+            |          
+            |--5.00%--branchy_score(Packet const&, std::vector<int, std::allocator<int> > const&) [clone .isra.0]
+            |          |          
+            |          |--3.16%--__mcount_internal
+            |          |          
+            |           --1.03%--_mcount
+            |          
+             --2.79%--_start
+                       __libc_start_main@@GLIBC_2.34
+                       __libc_start_call_main
+                       main
+                       run_epoch(std::vector<Packet, std::allocator<Packet> >&, std::vector<int, std::allocator<int> > const&, std::vector<int, std::allocator<int> > const&, std::vector<int, std::allocator<int> > const&, std::vector<int, std::allocator<int> >&, int) [clone .constprop.0]
+                       |          
+                        --2.72%--process_packets(std::vector<Packet, std::allocator<Packet> > const&, std::vector<int, std::allocator<int> > const&, std::vector<int, std::allocator<int> > const&, std::vector<int, std::allocator<int> > const&) [clone .isra.0]
+                                  |          
+                                   --2.20%--branchy_score(Packet const&, std::vector<int, std::allocator<int> > const&) [clone .isra.0]
+
+     6.84%     0.14%  main     main                  [.] build_dependency_next(int) [clone .constprop.0]
+            |          
+             --6.69%--build_dependency_next(int) [clone .constprop.0]
+                       |          
+                       |--5.11%--__mcount_internal
+                       |          
+                        --0.64%--_mcount
+
+     3.94%     2.18%  main     main                  [.] mcount@plt
+            |          
+            |--2.18%--_start
+            |          __libc_start_main@@GLIBC_2.34
+            |          __libc_start_call_main
+            |          main
+            |          |          
+            |           --1.75%--run_epoch(std::vector<Packet, std::allocator<Packet> >&, std::vector<int, std::allocator<int> > const&, std::vector<int, std::allocator<int> > const&, std::vector<int, std::allocator<int> > const&, std::vector<int, std::allocator<int> >&, int) [clone .constprop.0]
+            |                     |          
+            |                      --1.17%--process_packets(std::vector<Packet, std::allocator<Packet> > const&, std::vector<int, std::allocator<int> > const&, std::vector<int, std::allocator<int> > const&, std::vector<int, std::allocator<int> > const&) [clone .isra.0]
+            |                                |          
+            |                                 --0.51%--chase_dependency(int, std::vector<int, std::allocator<int> > const&, std::vector<int, std::allocator<int> > const&) [clone .isra.0]
+            |                                           _mcount
+            |          
+             --1.76%--mcount@plt
+
+     3.45%     0.00%  main     main                  [.] std::vector<int, std::allocator<int> >::_M_fill_initialize(unsigned long, int const&)
+            |
+            ---std::vector<int, std::allocator<int> >::_M_fill_initialize(unsigned long, int const&)
+               |          
+                --3.16%--int* std::__do_uninit_fill_n<int*, unsigned long, int>(int*, unsigned long, int const&)
+                          |          
+                          |--1.72%--__mcount_internal
+                          |          
+                           --1.08%--void std::_Construct<int, int const&>(int*, int const&) [clone .isra.0]
+                                     |          
+                                      --0.58%--__mcount_internal
+
+     3.31%     0.14%  main     main                  [.] int* std::__do_uninit_fill_n<int*, unsigned long, int>(int*, unsigned long, int const&)
+            |          
+             --3.16%--int* std::__do_uninit_fill_n<int*, unsigned long, int>(int*, unsigned long, int const&)
+                       |          
+                       |--1.72%--__mcount_internal
+                       |          
+                        --1.08%--void std::_Construct<int, int const&>(int*, int const&) [clone .isra.0]
+                                  |          
+                                   --0.58%--__mcount_internal
+
+     2.14%     0.22%  main     main                  [.] build_packets(int, int, int) [clone .constprop.0]
+            |          
+             --1.92%--build_packets(int, int, int) [clone .constprop.0]
+                       |          
+                       |--0.87%--__mcount_internal
+                       |          
+                        --0.77%--std::vector<Packet, std::allocator<Packet> >::_M_default_initialize(unsigned long)
+                                  Packet* std::__uninitialized_default_n_1<true>::__uninit_default_n<Packet*, unsigned long>(Packet*, unsigned long)
+                                  void std::__fill_a1<Packet*, Packet>(Packet*, Packet*, Packet const&)
+                                  asm_exc_page_fault
+
+     1.73%     0.00%  main     main                  [.] build_dependency_value(int) [clone .constprop.0]
+            |
+            ---build_dependency_value(int) [clone .constprop.0]
+               |          
+                --1.52%--__mcount_internal
+
+     1.45%     0.00%  main     [kernel.kallsyms]     [k] asm_exc_page_fault
+            |
+            ---asm_exc_page_fault
+               |          
+                --0.94%--exc_page_fault
+                          do_user_addr_fault
+                          |          
+                           --0.87%--handle_mm_fault
+                                     __handle_mm_fault
+                                     |          
+                                      --0.75%--do_anonymous_page
+
+     1.44%     0.29%  main     main                  [.] void std::_Construct<int, int const&>(int*, int const&) [clone .isra.0]
+            |          
+             --1.15%--void std::_Construct<int, int const&>(int*, int const&) [clone .isra.0]
+                       |          
+                        --0.58%--__mcount_internal
+
+     1.25%     1.03%  main     main                  [.] std::vector<int, std::allocator<int> >::operator[](unsigned long) const [clone .isra.0]
+            |          
+             --1.03%--_start
+                       __libc_start_main@@GLIBC_2.34
+                       __libc_start_call_main
+                       main
+                       run_epoch(std::vector<Packet, std::allocator<Packet> >&, std::vector<int, std::allocator<int> > const&, std::vector<int, std::allocator<int> > const&, std::vector<int, std::allocator<int> > const&, std::vector<int, std::allocator<int> >&, int) [clone .constprop.0]
+                       |          
+                       |--0.52%--process_packets(std::vector<Packet, std::allocator<Packet> > const&, std::vector<int, std::allocator<int> > const&, std::vector<int, std::allocator<int> > const&, std::vector<int, std::allocator<int> > const&) [clone .isra.0]
+                       |          
+                        --0.51%--cold_column_probe(std::vector<int, std::allocator<int> > const&, int, int, int) [clone .constprop.0] [clone .isra.0]
+
+     1.17%     0.37%  main     main                  [.] std::vector<Packet, std::allocator<Packet> >::operator[](unsigned long) const [clone .isra.0]
+            |          
+             --0.81%--std::vector<Packet, std::allocator<Packet> >::operator[](unsigned long) const [clone .isra.0]
+
+     1.09%     0.72%  main     main                  [.] std::vector<int, std::allocator<int> >::operator[](unsigned long) [clone .isra.0]
+            |          
+             --0.72%--_start
+                       __libc_start_main@@GLIBC_2.34
+                       __libc_start_call_main
+                       main
+
+     0.94%     0.00%  main     [kernel.kallsyms]     [k] exc_page_fault
+            |
+            ---exc_page_fault
+               do_user_addr_fault
+               |          
+                --0.87%--handle_mm_fault
+                          __handle_mm_fault
+                          |          
+                           --0.75%--do_anonymous_page
+
+     0.94%     0.07%  main     [kernel.kallsyms]     [k] do_user_addr_fault
+            |          
+             --0.87%--do_user_addr_fault
+                       handle_mm_fault
+                       __handle_mm_fault
+                       |          
+                        --0.75%--do_anonymous_page
+
+     0.88%     0.73%  main     main                  [.] int* std::vector<int, std::allocator<int> >::_M_data_ptr<int>(int*) const [clone .isra.0]
+            |          
+             --0.73%--_start
+                       __libc_start_main@@GLIBC_2.34
+                       __libc_start_call_main
+                       main
+                       run_epoch(std::vector<Packet, std::allocator<Packet> >&, std::vector<int, std::allocator<int> > const&, std::vector<int, std::allocator<int> > const&, std::vector<int, std::allocator<int> > const&, std::vector<int, std::allocator<int> >&, int) [clone .constprop.0]
+                       process_packets(std::vector<Packet, std::allocator<Packet> > const&, std::vector<int, std::allocator<int> > const&, std::vector<int, std::allocator<int> > const&, std::vector<int, std::allocator<int> > const&) [clone .isra.0]
+                       chase_dependency(int, std::vector<int, std::allocator<int> > const&, std::vector<int, std::allocator<int> > const&) [clone .isra.0]
+
+     0.87%     0.00%  main     [kernel.kallsyms]     [k] handle_mm_fault
+            |
+            ---handle_mm_fault
+               __handle_mm_fault
+               |          
+                --0.75%--do_anonymous_page
+
+     0.87%     0.00%  main     [kernel.kallsyms]     [k] __handle_mm_fault
+            |
+            ---__handle_mm_fault
+               |          
+                --0.75%--do_anonymous_page
+
+     0.77%     0.00%  main     main                  [.] std::vector<Packet, std::allocator<Packet> >::_M_default_initialize(unsigned long)
+            |
+            ---std::vector<Packet, std::allocator<Packet> >::_M_default_initialize(unsigned long)
+               Packet* std::__uninitialized_default_n_1<true>::__uninit_default_n<Packet*, unsigned long>(Packet*, unsigned long)
+               void std::__fill_a1<Packet*, Packet>(Packet*, Packet*, Packet const&)
+               asm_exc_page_fault
+
+     0.77%     0.00%  main     main                  [.] Packet* std::__uninitialized_default_n_1<true>::__uninit_default_n<Packet*, unsigned long>(Packet*, unsigned long)
+            |
+            ---Packet* std::__uninitialized_default_n_1<true>::__uninit_default_n<Packet*, unsigned long>(Packet*, unsigned long)
+               void std::__fill_a1<Packet*, Packet>(Packet*, Packet*, Packet const&)
+               asm_exc_page_fault
+
+     0.77%     0.20%  main     main                  [.] void std::__fill_a1<Packet*, Packet>(Packet*, Packet*, Packet const&)
+            |          
+             --0.57%--void std::__fill_a1<Packet*, Packet>(Packet*, Packet*, Packet const&)
+                       asm_exc_page_fault
+
+     0.75%     0.07%  main     [kernel.kallsyms]     [k] do_anonymous_page
+            |          
+             --0.68%--do_anonymous_page
+
+     0.59%     0.22%  main     main                  [.] std::vector<int, std::allocator<int> >::data() const [clone .isra.0]
+     0.47%     0.00%  main     [kernel.kallsyms]     [k] alloc_anon_folio
+     0.47%     0.00%  main     [kernel.kallsyms]     [k] entry_SYSCALL_64_after_hwframe
+     0.47%     0.00%  main     [kernel.kallsyms]     [k] do_syscall_64
+     0.44%     0.22%  main     main                  [.] std::vector<int, std::allocator<int> >::size() const [clone .isra.0]
+     0.44%     0.00%  main     main                  [.] std::vector<int, std::allocator<int> >::_M_default_initialize(unsigned long)
+     0.44%     0.00%  main     main                  [.] int* std::__uninitialized_default_n_1<true>::__uninit_default_n<int*, unsigned long>(int*, unsigned long)
+     0.44%     0.00%  main     main                  [.] void std::__fill_a1<int*, int>(int*, int*, int const&) [clone .isra.0]
+     0.41%     0.00%  main     [kernel.kallsyms]     [k] vma_alloc_folio_noprof
+     0.41%     0.00%  main     [kernel.kallsyms]     [k] alloc_pages_mpol
+     0.37%     0.37%  main     [kernel.kallsyms]     [k] __list_del_entry_valid_or_report
+     0.34%     0.00%  main     [kernel.kallsyms]     [k] __alloc_frozen_pages_noprof
+     0.34%     0.00%  main     [kernel.kallsyms]     [k] get_page_from_freelist
+     0.34%     0.00%  main     [kernel.kallsyms]     [k] rmqueue.isra.0
+     0.34%     0.00%  main     [kernel.kallsyms]     [k] rmqueue_pcplist
+     0.34%     0.00%  main     [kernel.kallsyms]     [k] __rmqueue_pcplist
+     0.29%     0.00%  main     ld-linux-x86-64.so.2  [.] _dl_start_user
+     0.29%     0.00%  main     ld-linux-x86-64.so.2  [.] _dl_start
+     0.29%     0.00%  main     ld-linux-x86-64.so.2  [.] _dl_sysdep_start
+     0.29%     0.00%  main     libc.so.6             [.] __munmap
+     0.29%     0.00%  main     [kernel.kallsyms]     [k] __x64_sys_munmap
+     0.29%     0.00%  main     [kernel.kallsyms]     [k] __vm_munmap
+     0.29%     0.00%  main     [kernel.kallsyms]     [k] do_vmi_munmap
+     0.29%     0.00%  main     [kernel.kallsyms]     [k] do_vmi_align_munmap
+     0.29%     0.00%  main     [kernel.kallsyms]     [k] vms_complete_munmap_vmas
+     0.29%     0.00%  main     [kernel.kallsyms]     [k] vms_clear_ptes
+     0.28%     0.14%  main     main                  [.] mix32(unsigned int)
+     0.27%     0.00%  main     ld-linux-x86-64.so.2  [.] dl_main
+     0.26%     0.26%  main     [kernel.kallsyms]     [k] sync_regs
+     0.22%     0.22%  main     main                  [.] operator new(unsigned long, void*) [clone .isra.0]
+     0.21%     0.21%  main     [kernel.kallsyms]     [k] _raw_spin_lock
+     0.21%     0.00%  main     [kernel.kallsyms]     [k] __pte_offset_map_lock
+     0.20%     0.00%  main     [kernel.kallsyms]     [k] rmqueue_bulk
+     0.17%     0.00%  main     ld-linux-x86-64.so.2  [.] _dl_relocate_object
+     0.17%     0.08%  main     ld-linux-x86-64.so.2  [.] _dl_relocate_object_no_relro
+     0.15%     0.15%  main     [kernel.kallsyms]     [k] zap_present_ptes.constprop.0
+     0.15%     0.00%  main     [kernel.kallsyms]     [k] unmap_vmas
+     0.15%     0.00%  main     [kernel.kallsyms]     [k] unmap_page_range
+     0.15%     0.00%  main     [kernel.kallsyms]     [k] zap_pmd_range.isra.0
+     0.15%     0.00%  main     [kernel.kallsyms]     [k] zap_pte_range
+     0.15%     0.00%  main     main                  [.] std::vector<Packet, std::allocator<Packet> >::operator[](unsigned long) [clone .isra.0]
+     0.15%     0.00%  main     [kernel.kallsyms]     [k] tlb_finish_mmu
+     0.15%     0.00%  main     [kernel.kallsyms]     [k] __tlb_batch_free_encoded_pages
+     0.15%     0.00%  main     [kernel.kallsyms]     [k] free_pages_and_swap_cache
+     0.15%     0.00%  main     [kernel.kallsyms]     [k] folios_put_refs
+     0.14%     0.14%  main     main                  [.] std::enable_if<std::__and_<std::__not_<std::__is_tuple_like<int> >, std::is_move_constructible<int>, std::is_move_assignable<int> >::value, void>::type std::swap<int>(int&, int&)
+     0.14%     0.00%  main     [kernel.kallsyms]     [k] asm_sysvec_apic_timer_interrupt
+     0.07%     0.07%  main     [kernel.kallsyms]     [k] lru_gen_del_folio.constprop.0
+     0.07%     0.00%  main     [kernel.kallsyms]     [k] __page_cache_release.part.0
+     0.07%     0.07%  main     [kernel.kallsyms]     [k] __fsnotify_parent
+     0.07%     0.00%  main     libc.so.6             [.] 0x00007f6a919ff8be
+     0.07%     0.00%  main     libc.so.6             [.] __run_exit_handlers
+     0.07%     0.00%  main     libc.so.6             [.] _mcleanup
+     0.07%     0.00%  main     libc.so.6             [.] __close_nocancel
+     0.07%     0.00%  main     [kernel.kallsyms]     [k] __x64_sys_close
+     0.07%     0.00%  main     [kernel.kallsyms]     [k] __fput
+     0.07%     0.07%  main     [kernel.kallsyms]     [k] policy_nodemask
+     0.07%     0.07%  main     [kernel.kallsyms]     [k] __rcu_read_lock
+     0.07%     0.00%  main     [kernel.kallsyms]     [k] handle_pte_fault
+     0.07%     0.00%  main     [kernel.kallsyms]     [k] pte_offset_map_rw_nolock
+     0.07%     0.00%  main     [kernel.kallsyms]     [k] ___pte_offset_map
+     0.07%     0.07%  main     [kernel.kallsyms]     [k] free_unref_folios
+     0.07%     0.07%  main     [kernel.kallsyms]     [k] __raw_spin_lock_irqsave
+     0.07%     0.00%  main     [kernel.kallsyms]     [k] sysvec_apic_timer_interrupt
+     0.07%     0.00%  main     [kernel.kallsyms]     [k] __sysvec_apic_timer_interrupt
+     0.07%     0.00%  main     [kernel.kallsyms]     [k] hrtimer_interrupt
+     0.07%     0.00%  main     [kernel.kallsyms]     [k] __hrtimer_run_queues
+     0.07%     0.00%  main     [kernel.kallsyms]     [k] tick_nohz_handler
+     0.07%     0.00%  main     [kernel.kallsyms]     [k] update_wall_time
+     0.06%     0.06%  main     [kernel.kallsyms]     [k] memcg1_commit_charge
+     0.06%     0.00%  main     [kernel.kallsyms]     [k] __mem_cgroup_charge
+     0.06%     0.00%  main     [kernel.kallsyms]     [k] charge_memcg
+     0.06%     0.00%  main     ld-linux-x86-64.so.2  [.] _dl_map_object_deps
+     0.06%     0.00%  main     ld-linux-x86-64.so.2  [.] _dl_catch_exception
+     0.06%     0.00%  main     ld-linux-x86-64.so.2  [.] openaux
+     0.06%     0.00%  main     ld-linux-x86-64.so.2  [.] _dl_map_object
+     0.05%     0.05%  main     libc.so.6             [.] _int_malloc
+     0.05%     0.00%  main     [unknown]             [.] 0000000000000000
+     0.05%     0.00%  main     libstdc++.so.6.0.34   [.] operator new(unsigned long)
+     0.05%     0.00%  main     libc.so.6             [.] malloc
+     0.05%     0.05%  main     [kernel.kallsyms]     [k] can_vma_merge_left.constprop.0
+     0.05%     0.00%  main     ld-linux-x86-64.so.2  [.] mprotect
+     0.05%     0.00%  main     [kernel.kallsyms]     [k] __x64_sys_mprotect
+     0.05%     0.00%  main     [kernel.kallsyms]     [k] do_mprotect_pkey
+     0.05%     0.00%  main     [kernel.kallsyms]     [k] mprotect_fixup
+     0.05%     0.00%  main     [kernel.kallsyms]     [k] vma_modify_flags
+     0.05%     0.00%  main     [kernel.kallsyms]     [k] vma_modify
+     0.05%     0.00%  main     [kernel.kallsyms]     [k] vma_merge_existing_range
+     0.05%     0.05%  main     ld-linux-x86-64.so.2  [.] _dl_lookup_symbol_x
+     0.03%     0.03%  main     [kernel.kallsyms]     [k] lruvec_stat_mod_folio
+     0.03%     0.00%  main     [kernel.kallsyms]     [k] wp_page_copy
+     0.03%     0.00%  main     [kernel.kallsyms]     [k] folio_add_new_anon_rmap
+     0.03%     0.00%  main     [kernel.kallsyms]     [k] __folio_mod_stat
+     0.03%     0.03%  main     ld-linux-x86-64.so.2  [.] search_cache
+     0.03%     0.00%  main     ld-linux-x86-64.so.2  [.] _dl_load_cache_lookup
+     0.03%     0.00%  main     ld-linux-x86-64.so.2  [.] _dl_map_object_from_fd
+     0.03%     0.00%  main     ld-linux-x86-64.so.2  [.] mmap64
+     0.03%     0.00%  main     [kernel.kallsyms]     [k] ksys_mmap_pgoff
+     0.03%     0.00%  main     [kernel.kallsyms]     [k] vm_mmap_pgoff
+     0.03%     0.00%  main     [kernel.kallsyms]     [k] do_mmap
+     0.03%     0.00%  main     [kernel.kallsyms]     [k] __mmap_region
+     0.03%     0.00%  main     [kernel.kallsyms]     [k] __mmap_new_vma
+     0.03%     0.00%  main     [kernel.kallsyms]     [k] mas_store_prealloc
+     0.03%     0.00%  main     [kernel.kallsyms]     [k] mas_wr_node_store
+     0.03%     0.00%  main     [kernel.kallsyms]     [k] kvfree_call_rcu
+     0.03%     0.00%  main     [kernel.kallsyms]     [k] __kfree_rcu_sheaf
+     0.03%     0.00%  main     [kernel.kallsyms]     [k] barn_get_empty_sheaf
+     0.02%     0.00%  main     [unknown]             [k] 0x00007f26a0917e4b
+     0.02%     0.00%  main     [kernel.kallsyms]     [k] __x64_sys_execve
+     0.02%     0.00%  main     [kernel.kallsyms]     [k] do_execveat_common.isra.0
+     0.02%     0.00%  main     [kernel.kallsyms]     [k] bprm_execve.part.0
+     0.02%     0.00%  main     [kernel.kallsyms]     [k] exec_binprm
+     0.02%     0.00%  main     [kernel.kallsyms]     [k] load_elf_binary
+     0.02%     0.02%  main     ld-linux-x86-64.so.2  [.] intel_check_word.constprop.0
+     0.02%     0.00%  main     ld-linux-x86-64.so.2  [.] init_cpu_features.constprop.0
+     0.02%     0.00%  main     ld-linux-x86-64.so.2  [.] handle_intel.constprop.0
+     0.01%     0.01%  main     [kernel.kallsyms]     [k] kmem_cache_alloc_noprof
+     0.01%     0.01%  main     [kernel.kallsyms]     [k] mas_preallocate
+     0.01%     0.00%  main     [kernel.kallsyms]     [k] elf_load
+     0.01%     0.00%  main     [kernel.kallsyms]     [k] map_vdso
+     0.01%     0.00%  main     [kernel.kallsyms]     [k] _install_special_mapping
+     0.01%     0.00%  main     [kernel.kallsyms]     [k] do_fault
+     0.01%     0.00%  main     [kernel.kallsyms]     [k] __vmf_anon_prepare
+     0.01%     0.00%  main     [kernel.kallsyms]     [k] insert_vm_struct
+     0.01%     0.00%  main     [kernel.kallsyms]     [k] __anon_vma_prepare
+     0.01%     0.00%  main     [kernel.kallsyms]     [k] vma_link
+
+
+#
+# (Tip: Save output of perf stat using: perf stat record <target workload>)
+#

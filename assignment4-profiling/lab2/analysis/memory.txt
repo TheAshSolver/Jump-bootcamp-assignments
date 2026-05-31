@@ -1,0 +1,67 @@
+==237482== Memcheck, a memory error detector
+==237482== Copyright (C) 2002-2024, and GNU GPL'd, by Julian Seward et al.
+==237482== Using Valgrind-3.26.0 and LibVEX; rerun with -h for copyright info
+==237482== Command: ./main
+==237482== 
+==237482== 
+==237482== HEAP SUMMARY:
+==237482==     in use at exit: 122,880 bytes in 6 blocks
+==237482==   total heap usage: 13 allocs, 7 frees, 10,719,616 bytes allocated
+==237482== 
+==237482== 8,192 bytes in 1 blocks are still reachable in loss record 1 of 6
+==237482==    at 0x4841A3A: operator new[](unsigned long) (vg_replace_malloc.c:730)
+==237482==    by 0x4904A07: _M_allocate_internal_buffer (fstream.tcc:61)
+==237482==    by 0x4904A07: std::basic_filebuf<char, std::char_traits<char> >::_M_allocate_internal_buffer() (fstream.tcc:54)
+==237482==    by 0x4902862: __gnu_cxx::stdio_filebuf<char, std::char_traits<char> >::stdio_filebuf(_IO_FILE*, std::_Ios_Openmode, unsigned long) (stdio_filebuf.h:165)
+==237482==    by 0x48AD425: std::ios_base::sync_with_stdio(bool) (ios_init.cc:181)
+==237482==    by 0x4004D7: main (main.cpp:226)
+==237482== 
+==237482== 8,192 bytes in 1 blocks are still reachable in loss record 2 of 6
+==237482==    at 0x4841A3A: operator new[](unsigned long) (vg_replace_malloc.c:730)
+==237482==    by 0x4904A07: _M_allocate_internal_buffer (fstream.tcc:61)
+==237482==    by 0x4904A07: std::basic_filebuf<char, std::char_traits<char> >::_M_allocate_internal_buffer() (fstream.tcc:54)
+==237482==    by 0x4902862: __gnu_cxx::stdio_filebuf<char, std::char_traits<char> >::stdio_filebuf(_IO_FILE*, std::_Ios_Openmode, unsigned long) (stdio_filebuf.h:165)
+==237482==    by 0x48AD445: std::ios_base::sync_with_stdio(bool) (ios_init.cc:182)
+==237482==    by 0x4004D7: main (main.cpp:226)
+==237482== 
+==237482== 8,192 bytes in 1 blocks are still reachable in loss record 3 of 6
+==237482==    at 0x4841A3A: operator new[](unsigned long) (vg_replace_malloc.c:730)
+==237482==    by 0x4904A07: _M_allocate_internal_buffer (fstream.tcc:61)
+==237482==    by 0x4904A07: std::basic_filebuf<char, std::char_traits<char> >::_M_allocate_internal_buffer() (fstream.tcc:54)
+==237482==    by 0x4902862: __gnu_cxx::stdio_filebuf<char, std::char_traits<char> >::stdio_filebuf(_IO_FILE*, std::_Ios_Openmode, unsigned long) (stdio_filebuf.h:165)
+==237482==    by 0x48AD466: std::ios_base::sync_with_stdio(bool) (ios_init.cc:183)
+==237482==    by 0x4004D7: main (main.cpp:226)
+==237482== 
+==237482== 32,768 bytes in 1 blocks are still reachable in loss record 4 of 6
+==237482==    at 0x4841A3A: operator new[](unsigned long) (vg_replace_malloc.c:730)
+==237482==    by 0x490664A: _M_allocate_internal_buffer (fstream.tcc:61)
+==237482==    by 0x490664A: std::basic_filebuf<wchar_t, std::char_traits<wchar_t> >::_M_allocate_internal_buffer() (fstream.tcc:54)
+==237482==    by 0x4902A42: __gnu_cxx::stdio_filebuf<wchar_t, std::char_traits<wchar_t> >::stdio_filebuf(_IO_FILE*, std::_Ios_Openmode, unsigned long) (stdio_filebuf.h:165)
+==237482==    by 0x48AD4E2: std::ios_base::sync_with_stdio(bool) (ios_init.cc:190)
+==237482==    by 0x4004D7: main (main.cpp:226)
+==237482== 
+==237482== 32,768 bytes in 1 blocks are still reachable in loss record 5 of 6
+==237482==    at 0x4841A3A: operator new[](unsigned long) (vg_replace_malloc.c:730)
+==237482==    by 0x490664A: _M_allocate_internal_buffer (fstream.tcc:61)
+==237482==    by 0x490664A: std::basic_filebuf<wchar_t, std::char_traits<wchar_t> >::_M_allocate_internal_buffer() (fstream.tcc:54)
+==237482==    by 0x4902A42: __gnu_cxx::stdio_filebuf<wchar_t, std::char_traits<wchar_t> >::stdio_filebuf(_IO_FILE*, std::_Ios_Openmode, unsigned long) (stdio_filebuf.h:165)
+==237482==    by 0x48AD502: std::ios_base::sync_with_stdio(bool) (ios_init.cc:191)
+==237482==    by 0x4004D7: main (main.cpp:226)
+==237482== 
+==237482== 32,768 bytes in 1 blocks are still reachable in loss record 6 of 6
+==237482==    at 0x4841A3A: operator new[](unsigned long) (vg_replace_malloc.c:730)
+==237482==    by 0x490664A: _M_allocate_internal_buffer (fstream.tcc:61)
+==237482==    by 0x490664A: std::basic_filebuf<wchar_t, std::char_traits<wchar_t> >::_M_allocate_internal_buffer() (fstream.tcc:54)
+==237482==    by 0x4902A42: __gnu_cxx::stdio_filebuf<wchar_t, std::char_traits<wchar_t> >::stdio_filebuf(_IO_FILE*, std::_Ios_Openmode, unsigned long) (stdio_filebuf.h:165)
+==237482==    by 0x48AD51C: std::ios_base::sync_with_stdio(bool) (ios_init.cc:192)
+==237482==    by 0x4004D7: main (main.cpp:226)
+==237482== 
+==237482== LEAK SUMMARY:
+==237482==    definitely lost: 0 bytes in 0 blocks
+==237482==    indirectly lost: 0 bytes in 0 blocks
+==237482==      possibly lost: 0 bytes in 0 blocks
+==237482==    still reachable: 122,880 bytes in 6 blocks
+==237482==         suppressed: 0 bytes in 0 blocks
+==237482== 
+==237482== For lists of detected and suppressed errors, rerun with: -s
+==237482== ERROR SUMMARY: 0 errors from 0 contexts (suppressed: 0 from 0)

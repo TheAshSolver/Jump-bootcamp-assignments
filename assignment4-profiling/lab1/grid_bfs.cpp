@@ -192,10 +192,12 @@ int shortest_path_bfs(const vector<string> &grid, const RouteRequest &request,
     int rows = static_cast<int>(grid.size());
     int cols = static_cast<int>(grid[0].size());
     int total = rows * cols;
-
+    int return_value = -1;
     int *distance = new int[total];
+    // std::unique_ptr<int[]> distance = std::make_unique<int[]>(total);
     std::fill(distance, distance + total, -1);
-    unsigned char *visited = new unsigned char[total]{};
+    // unsigned char *visited = new unsigned char[total]{};
+    std::unique_ptr<unsigned char[]> visited = std::make_unique<unsigned char[]>(total);
     vector<Point> frontier(static_cast<size_t>(total));
     size_t frontier_head = 0;
     size_t frontier_tail = 0;
@@ -207,7 +209,7 @@ int shortest_path_bfs(const vector<string> &grid, const RouteRequest &request,
     distance[start_index] = 0;
     heatmap[start_index] += 1;
     frontier[frontier_tail++] = request.start;
-
+    
     const int drow[4] = {-1, 1, 0, 0};
     const int dcol[4] = {0, 0, -1, 1};
 
@@ -216,7 +218,9 @@ int shortest_path_bfs(const vector<string> &grid, const RouteRequest &request,
 
         int current_index = current.row * cols + current.col;
         if (current_index == goal_index) {
-            return distance[current_index];
+            return_value = distance[current_index];
+            delete[] distance;
+            return return_value;
         }
 
         for (int direction = 0; direction < 4; ++direction) {
@@ -241,7 +245,7 @@ int shortest_path_bfs(const vector<string> &grid, const RouteRequest &request,
             frontier[frontier_tail++] = {next_row, next_col};
         }
     }
-
+    delete[] distance;
     return -1;
 }
 
@@ -355,8 +359,8 @@ CongestionSummary compute_congestion_pressure(const vector<int> &heatmap,
     }
 
     for (int pass = 0; pass < congestion_passes; ++pass) {
-        for (int col = 1; col < cols - 1; ++col) {
-            for (int row = 1; row < rows - 1; ++row) {
+        for (int row = 1; row < rows - 1; ++row) {
+            for (int col = 1; col < cols - 1; ++col) {
                 int index = row * cols + col;
 
                 int center = current[index];
