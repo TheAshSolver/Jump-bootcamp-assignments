@@ -1,5 +1,5 @@
 CXX := g++
-CXXFLAGS := -std=c++20 -pg -fno-omit-frame-pointer -fno-inline -g -Wall -Wextra -pedantic -O2 
+CXXFLAGS := -std=c++20  -fno-omit-frame-pointer -fno-inline -g -Wall -Wextra -pedantic -O2 
 TARGET := main
 SOURCE := main.cpp
 
