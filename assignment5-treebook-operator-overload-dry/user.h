@@ -6,7 +6,7 @@
 
 #include <iostream>
 #include <string>
-
+#include "friend_list.h" 
 class User
 {
 public:
@@ -15,7 +15,12 @@ public:
   std::string get_name() const;
   size_t size() const;
   void set_friend(size_t index, const std::string& name);
-
+  User& operator+=(User& user);
+  bool operator<(const User& user) const;
+  User(User&& other) = delete;
+  User& operator=(User&& other) = delete;
+  User(const User& other) = default;
+  User& operator=(const User& other) = default;
   /** 
    * STUDENT TODO:
    * Your custom operators and special member functions will go here!
@@ -23,7 +28,9 @@ public:
 
 private:
   std::string _name;
-  std::string* _friends;
-  size_t _size;
-  size_t _capacity;
+  FriendList  _friends;
+
+
+  friend std::ostream& operator<<(std::ostream &os, User user);
+  
 };
