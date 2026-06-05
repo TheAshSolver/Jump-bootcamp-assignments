@@ -8,15 +8,19 @@ Q1 (DRY — Part 3).
     eliminate that duplication? If you chose copy-and-swap, also explain
     why it is exception-safe.
 
+    if(this==&other){
+        return;
+    }
 
+    delete[] _friends;
+    _capacity = other.capacity;
+    _size = other.size;
+    _friends = new std::string[_capacity];
+    for(int i =0;i<_size;i++){
+        _friends[i] = other._friends[i];
+    }
 
-
-
-
-
-    
-
-    YOUR ANSWER:
+    I used copy and swap idiom. Copy and swap idiom implicity uses the copy constructor by taking in the parameter as value instead of reference. This means two things for the program. Firstly, no need to write any new statements or initiate objects on the heap. Instead, we can simply swap values beteen the current object and the argument. The second reason is that this is exception safe. The reason is, the allocation of memory for the array of strings happens before the current data is deleted, thus, if there is a bad allocation, the original data is retained. In fact, we do not even need to delete any data manually as the destructor of newly created object from the argument takes care of that. 
 
 
 Q2 (SRP — Part 4).
@@ -28,6 +32,16 @@ Q2 (SRP — Part 4).
 
     YOUR ANSWER:
 
+    Much of it is already written on the readme but I will elaborate.
+
+    Apart from storing the name of the user, which should be the primary responsibility of this class, along with simply adding new friends. However, the class is also taking on the responsibility for these features which are better off in the friendlist class. 
+
+    1) keeping track of the size of the array of friends
+    2) keeping track of the capacity of the array of friends
+    3) Mallocing and reallocing the array to increase capacity. 
+    4) incrementing the size, capacity and taking care of duplication and ownership of _friends pointer
+
+
 
 Q3 (Rule of Zero — Part 6, if attempted).
     Why does removing every SMF declaration from your `FriendList` and
@@ -36,4 +50,4 @@ Q3 (Rule of Zero — Part 6, if attempted).
     still want them deleted now that you've reached Part 6? Argue one way
     or the other in 2–4 sentences.
 
-    YOUR ANSWER:
+    YOUR ANSWER: The reason we can safely remove every SMF declaration after part 6 is that std::vector can already safely copy and move items. However, a pointer to a string cannot do that. Since a pointer to a string only shallow copies, this risks double deletion. I also do not want to explicity delete the move constructor because users being moved is not risky anymore.   
