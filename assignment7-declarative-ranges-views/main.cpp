@@ -32,10 +32,28 @@
  */
 template <std::ranges::range Rng>
 std::ostream& format_range(std::ostream& s, const Rng& rng) {
-  // STUDENT TODO: Implement this function.
-  throw std::runtime_error("Not implemented: format_range");
+  s<<"{";
+  std::string delimited ="";
+  std::ranges::for_each(rng, [&s, &delimited](auto x){
+    s<< delimited<<x;
+    delimited = ",";
+  });
+  s<<"}";
+  return s;
 }
 
+
+template <std::ranges::range Rng>
+std::ostream& format_range_helper(std::ostream& s, const Rng& rng, std::string delimiter) {
+  s<<"{";
+  std::string delimited ="";
+  std::ranges::for_each(rng, [&s, &delimited, &delimiter](auto x){
+    s<< delimited<<x;
+    delimited = delimiter;
+  });
+  s<<"}";
+  return s;
+}
 /* ------------------------------------------------------------------ *
  * Part 2: format_categorized                                         *
  * ------------------------------------------------------------------ */
@@ -53,20 +71,20 @@ std::ostream& format_range(std::ostream& s, const Rng& rng) {
  */
 template <std::ranges::forward_range Rng>
 std::ostream& format_categorized(std::ostream& s, const Rng& rng) {
-  // STUDENT TODO: Implement the forward-range overload (delimiter "->").
-  throw std::runtime_error("Not implemented: format_categorized (forward)");
+    format_range_helper(s, rng, "->");
+    return s;
 }
 
 template <std::ranges::bidirectional_range Rng>
 std::ostream& format_categorized(std::ostream& s, const Rng& rng) {
-  // STUDENT TODO: Implement the bidirectional-range overload (delimiter "<=>").
-  throw std::runtime_error("Not implemented: format_categorized (bidirectional)");
+   format_range_helper(s, rng, "<=>");
+   return s;
 }
 
 template <std::ranges::random_access_range Rng>
 std::ostream& format_categorized(std::ostream& s, const Rng& rng) {
-  // STUDENT TODO: Implement the random-access-range overload (delimiter ",").
-  throw std::runtime_error("Not implemented: format_categorized (random access)");
+   format_range_helper(s, rng, ",");
+   return s;
 }
 
 /* ------------------------------------------------------------------ *
@@ -85,7 +103,11 @@ std::ostream& format_categorized(std::ostream& s, const Rng& rng) {
 // removes a leading run; std::views::reverse lets you reach the other end.
 // (The placeholder `std::views::all` compiles but does no trimming, so the
 // trim_whitespace tests will fail until you implement this.)
-inline constexpr auto trim_whitespace = std::views::all;
+inline constexpr auto trim_whitespace = std::views::drop_while([](auto x){
+  return std::isspace(x);
+}) | std::views::reverse | std::views::drop_while([](auto x){
+  return std::isspace(x);
+}) | std::views::reverse;
 
 /* ------------------------------------------------------------------ *
  * Part 4: valid_card (Luhn check)                                    *
@@ -103,8 +125,12 @@ inline constexpr auto trim_whitespace = std::views::all;
  */
 template <std::ranges::bidirectional_range Rng>
 bool valid_card(const Rng& digits) {
-  // STUDENT TODO: Implement this function.
-  throw std::runtime_error("Not implemented: valid_card");
+  auto even_sum =  std::ranges::fold_left(digits | std::views::reverse | std::views::drop(1)| std::views::stride(2) | std::views::transform([](auto x){ return 2*x>9? 2*x-9: 2*x;}),0, std::plus<>{});
+  auto odd_sum =   std::ranges::fold_left(digits | std::views::reverse |  std::views::stride(2) ,0, std::plus<>{});
+  if((even_sum+odd_sum)%10==0){
+      return true;
+  }
+  return false;
 }
 
 /* #### Please don't remove this line! #### */
